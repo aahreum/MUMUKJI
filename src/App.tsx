@@ -1,7 +1,11 @@
+import './styles/common.scss'
+
 const App = () => {
   return (
     <>
-      <div>머먹지</div>
+      <div>
+        <h1>야호안녕??</h1>
+      </div>
     </>
   )
 }
