@@ -1,6 +1,7 @@
 .wrap {
   margin: 0 auto;
   width: 480px;
+  min-height: 100vh;
   height: fit-content;
   background-color: $bg-yellow;
 }
