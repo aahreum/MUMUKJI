@@ -1,0 +1,17 @@
+.container {
+  padding-top: 72px;
+  width: 100%;
+}
+
+.image {
+  margin: 16px auto;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+}
+
+.buttonArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

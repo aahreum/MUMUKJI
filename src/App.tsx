@@ -1,12 +1,12 @@
-import './styles/common.scss'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routers/router'
+import Wrap from './components/common/Wrap'
 
-const App = () => {
+const App = (): React.ReactElement => {
   return (
-    <>
-      <div>
-        <h1>야호안녕??</h1>
-      </div>
-    </>
+    <Wrap>
+      <RouterProvider router={router} />
+    </Wrap>
   )
 }
 

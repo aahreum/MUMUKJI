@@ -1,9 +1,8 @@
 @use 'scss-reset/reset';
 @import './base/_color';
+@import './base/variables';
 @import './base/font';
 
-h1 {
-  font-size: 24px;
-  color: $secondary-400;
-  font-family: 'SUIT', sans-serif;
+a {
+  text-decoration: none;
 }
