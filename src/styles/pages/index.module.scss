@@ -1,7 +1,6 @@
 .container {
   padding-top: 72px;
   width: 100%;
-  height: calc(100vh - 72px);
 }
 
 .image {
@@ -9,4 +8,10 @@
   display: block;
   width: 100%;
   background-color: #fff;
+}
+
+.buttonArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
