@@ -1,0 +1,24 @@
+.container {
+  margin: 16px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+
+  > .buttonText {
+    font-size: 12px;
+    font-family: 'SUIT', sans-serif;
+    font-weight: 700;
+    color: $gray-700;
+  }
+
+  &.active > svg > path {
+    fill: $primary-500;
+  }
+
+  &.active > .buttonText {
+    color: $primary-500;
+  }
+}
