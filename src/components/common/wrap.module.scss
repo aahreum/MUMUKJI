@@ -1,8 +1,9 @@
 .wrap {
   position: relative;
   margin: 0 auto;
+  padding: 0px 16px;
   width: $maxWidth;
-  min-height: 100vh;
   height: fit-content;
+  min-height: 100vh;
   background-color: $bg-yellow;
 }
