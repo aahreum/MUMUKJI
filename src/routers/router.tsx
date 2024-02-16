@@ -3,7 +3,7 @@ import Index from '@/pages/Index'
 import Edit from '@/pages/Edit'
 import Layout from '@/pages/Layout'
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     id: 'rootLayout',
     element: <Layout />,
@@ -21,3 +21,5 @@ export const router = createBrowserRouter([
     ],
   },
 ])
+
+export default router
