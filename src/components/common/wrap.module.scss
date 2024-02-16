@@ -2,7 +2,9 @@
   position: relative;
   margin: 0 auto;
   padding: 0px 16px 88px;
-  width: $maxWidth;
+  min-width: $minWidth;
+  max-width: $maxWidth;
+  width: 100%;
   height: fit-content;
   min-height: 100vh;
   background-color: $bg-yellow;
