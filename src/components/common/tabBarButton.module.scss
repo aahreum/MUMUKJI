@@ -7,11 +7,19 @@
   gap: 4px;
   cursor: pointer;
 
+  @media (max-width: $maxWidth) {
+    margin: 16px 24px;
+  }
+
   > .buttonText {
     font-size: 12px;
     font-family: 'SUIT', sans-serif;
     font-weight: 700;
     color: $gray-700;
+
+    @media (max-width: $maxWidth) {
+      font-size: 10px;
+    }
   }
 
   &.active > svg > path {
