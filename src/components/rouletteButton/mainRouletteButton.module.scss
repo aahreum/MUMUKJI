@@ -11,15 +11,14 @@
   justify-content: space-between;
 
   span {
+    .accent {
+      color: $primary-600;
+    }
     font-family: 'SUIT', sans-serif;
     font-size: 16px;
     line-height: 22px;
-    font-weight: 700;
+    font-weight: 800;
     color: $gray-700;
-  }
-
-  .accent {
-    color: $primary-600;
   }
 
   .rightArea {
@@ -28,6 +27,7 @@
     span {
       font-size: 12px;
       color: $gray-700;
+      font-weight: 700;
     }
   }
 }
