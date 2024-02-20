@@ -30,10 +30,12 @@ const TabBar = () => {
   ]
 
   return (
-    <div className={styles.container}>
-      {tabMenu.map((item) => (
-        <TabBarButton key={item.menu} icon={item.icon} menu={item.menu} url={item.url} />
-      ))}
+    <div className={styles.bgArea}>
+      <div className={styles.container}>
+        {tabMenu.map((item) => (
+          <TabBarButton key={item.menu} icon={item.icon} menu={item.menu} url={item.url} />
+        ))}
+      </div>
     </div>
   )
 }
