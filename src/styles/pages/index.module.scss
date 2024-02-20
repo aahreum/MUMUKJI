@@ -4,6 +4,8 @@
 }
 
 .image {
+  object-fit: cover;
+  height: 200px;
   margin: 16px auto;
   display: block;
   width: 100%;
