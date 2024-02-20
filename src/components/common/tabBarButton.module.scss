@@ -15,10 +15,6 @@
     font-family: 'SUIT', sans-serif;
     font-weight: 700;
     color: $gray-700;
-
-    @media (max-width: $maxWidth) {
-      font-size: 10px;
-    }
   }
 
   &.active > svg > path {
