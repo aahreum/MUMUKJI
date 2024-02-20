@@ -1,4 +1,4 @@
-import image from '/images/ani.png'
+import image from '/images/mainImg.png'
 import styles from '@/styles/pages/index.module.scss'
 import TopLogo from '@/components/common/TopLogo'
 import MainRouletteButton from '@/components/rouletteButton/MainRouletteButton'
