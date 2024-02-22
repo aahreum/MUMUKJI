@@ -4,12 +4,16 @@
 }
 
 .image {
-  object-fit: cover;
-  height: 200px;
   margin: 16px auto;
-  display: block;
+  object-fit: cover;
   width: 100%;
+  height: 320px;
+  display: block;
   background-color: #fff;
+
+  @media screen and (max-width: $minWidth) {
+    height: 200px;
+  }
 }
 
 .buttonArea {
