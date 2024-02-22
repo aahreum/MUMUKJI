@@ -3,6 +3,7 @@ import Index from '@/pages/Index'
 import Edit from '@/pages/Edit'
 import Layout from '@/pages/Layout'
 import List from '@/pages/List'
+import NotFound from '@/pages/NotFound'
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
         element: <List />,
       },
     ],
+  },
+  {
+    id: 'notFound',
+    path: '*',
+    element: <NotFound />,
   },
 ])
 

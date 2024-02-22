@@ -1,0 +1,38 @@
+.container {
+  padding: 0 16px;
+  position: relative;
+  height: calc(100vh - 88px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 246px;
+    height: 290px;
+    margin-bottom: 28px;
+  }
+
+  p {
+    font-family: 'SUIT', sans-serif;
+    text-align: center;
+    line-height: 24px;
+    color: $gray-500;
+  }
+
+  .title {
+    margin-bottom: 8px;
+    font-size: 24px;
+    line-height: 42px;
+    font-weight: 800;
+    color: $gray-700;
+  }
+
+  a {
+    position: fixed;
+    bottom: 16px;
+    max-width: calc($maxWidth - 32px);
+    width: calc(100% - 32px);
+  }
+}
