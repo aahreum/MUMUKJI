@@ -1,9 +1,19 @@
-// font-face
+@use '../base/_font' as *;
+@use '../base/_color' as *;
+
+// font face
 @mixin fontFace($fontFamily, $weight, $file, $style: normal) {
   @font-face {
     font-family: $fontFamily;
     font-weight: $weight;
     src: url('@/assets/fonts/#{$file}.woff2') format('woff2');
-    font-style: normal;
+    font-style: $style;
   }
+}
+
+// font style
+@mixin fontStyle($size, $weight: 400, $color: $gray-700, $line-height: $body-line-height) {
+  font-family: $font-main;
+  font-size: $size;
+  line-height: $line-height;
 }
