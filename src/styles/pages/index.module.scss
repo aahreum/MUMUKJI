@@ -10,7 +10,7 @@
   height: 320px;
   display: block;
 
-  @media screen and (max-width: $minWidth) {
+  @media screen and (max-width: $min-width) {
     height: 200px;
   }
 }

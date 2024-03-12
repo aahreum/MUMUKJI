@@ -8,8 +8,8 @@
 }
 
 .bgArea {
-  min-width: $minWidth;
-  max-width: $maxWidth;
+  min-width: $min-width;
+  max-width: $max-width;
   width: 100%;
   padding: 0 60px;
   background-color: $gray-0;
@@ -18,7 +18,7 @@
 }
 
 .container {
-  width: $minWidth;
+  width: $min-width;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
