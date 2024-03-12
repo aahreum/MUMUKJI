@@ -1,7 +1,9 @@
+@charset 'UTF-8';
 @use 'scss-reset/reset';
-@import './base/_color';
-@import './base/_size';
-@import './base/fontFace';
+@forward './base/_variablesColor';
+@forward './base/_variablesSize';
+@forward './base/_variablesFont';
+@forward './base/fontFace';
 
 a {
   text-decoration: none;
