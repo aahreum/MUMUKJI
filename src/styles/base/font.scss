@@ -1,45 +1,11 @@
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 100;
-  src: url('@/assets/fonts/SUIT-Thin.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 200;
-  src: url('@/assets/fonts/SUIT-ExtraLight.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 300;
-  src: url('@/assets/fonts/SUIT-Light.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 400;
-  src: url('@/assets/fonts/SUIT-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 500;
-  src: url('@/assets/fonts/SUIT-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 600;
-  src: url('@/assets/fonts/SUIT-SemiBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 700;
-  src: url('@/assets/fonts/SUIT-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 800;
-  src: url('@/assets/fonts/SUIT-ExtraBold.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'SUIT';
-  font-weight: 900;
-  src: url('@/assets/fonts/SUIT-Heavy.woff2') format('woff2');
-}
+@use '../mixins/_font' as *;
+
+@include fontFace('SUIT', 100, 'SUIT-Thin');
+@include fontFace('SUIT', 200, 'SUIT-ExtraLight');
+@include fontFace('SUIT', 300, 'SUIT-Light');
+@include fontFace('SUIT', 400, 'SUIT-Regular');
+@include fontFace('SUIT', 500, 'SUIT-Medium');
+@include fontFace('SUIT', 600, 'SUIT-SemiBold');
+@include fontFace('SUIT', 700, 'SUIT-Bold');
+@include fontFace('SUIT', 800, 'SUIT-ExtraBold');
+@include fontFace('SUIT', 900, 'SUIT-Heavy');
