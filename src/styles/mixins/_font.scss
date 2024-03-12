@@ -1,5 +1,5 @@
-@use '../base/_font' as *;
-@use '../base/_color' as *;
+@use '@/styles/base/_variablesColor' as c;
+@use '@/styles/base/_variablesFont' as f;
 
 // font face
 @mixin fontFace($fontFamily, $weight, $file, $style: normal) {
@@ -12,8 +12,8 @@
 }
 
 // font style
-@mixin fontStyle($size, $weight: 400, $color: $gray-700, $line-height: $body-line-height) {
-  font-family: $font-main;
+@mixin fontStyle($size, $weight: 400, $color: c.$gray-700, $line-height: f.$body-line-height) {
+  font-family: f.$font-main;
   font-size: $size;
   line-height: $line-height;
 }
