@@ -1,4 +1,4 @@
-@use '../mixins/_font' as *;
+@use '@/styles/mixins/_font' as *;
 
 @include fontFace('SUIT', 100, 'SUIT-Thin');
 @include fontFace('SUIT', 200, 'SUIT-ExtraLight');
