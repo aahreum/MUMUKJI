@@ -1,9 +1,9 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
 .container {
   margin: 16px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex.flexLayout(column);
   cursor: pointer;
 
   @media (max-width: $max-width) {
@@ -11,10 +11,7 @@
   }
 
   > .buttonText {
-    font-size: 12px;
-    font-family: 'SUIT', sans-serif;
-    font-weight: 700;
-    color: $gray-700;
+    @include font.fontStyle($size: $font-size-xs, $weight: 700);
   }
 
   &.active > svg > path {
