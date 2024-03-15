@@ -12,8 +12,10 @@
 }
 
 // font style
-@mixin fontStyle($size, $weight: 400, $color: c.$gray-700, $line-height: f.$line-height-s) {
+@mixin fontStyle($size: f.$font-size-m, $line-height: f.$line-height-s, $weight: 400, $color: c.$gray-700) {
   font-family: f.$font-main;
   font-size: $size;
   line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
 }
