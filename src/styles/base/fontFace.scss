@@ -1,0 +1,11 @@
+@use '@/styles/mixins/_font' as *;
+
+@include fontFace('SUIT', 100, 'SUIT-Thin');
+@include fontFace('SUIT', 200, 'SUIT-ExtraLight');
+@include fontFace('SUIT', 300, 'SUIT-Light');
+@include fontFace('SUIT', 400, 'SUIT-Regular');
+@include fontFace('SUIT', 500, 'SUIT-Medium');
+@include fontFace('SUIT', 600, 'SUIT-SemiBold');
+@include fontFace('SUIT', 700, 'SUIT-Bold');
+@include fontFace('SUIT', 800, 'SUIT-ExtraBold');
+@include fontFace('SUIT', 900, 'SUIT-Heavy');

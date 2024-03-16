@@ -2,8 +2,10 @@ import { createBrowserRouter } from 'react-router-dom'
 import Index from '@/pages/Index'
 import Edit from '@/pages/Edit'
 import Layout from '@/pages/Layout'
+import List from '@/pages/List'
+import NotFound from '@/pages/NotFound'
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     id: 'rootLayout',
     element: <Layout />,
@@ -18,6 +20,18 @@ export const router = createBrowserRouter([
         path: '/edit',
         element: <Edit />,
       },
+      {
+        id: 'list',
+        path: '/list',
+        element: <List />,
+      },
     ],
   },
+  {
+    id: 'notFound',
+    path: '*',
+    element: <NotFound />,
+  },
 ])
+
+export default router

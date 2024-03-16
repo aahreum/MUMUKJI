@@ -1,13 +1,16 @@
 .container {
   padding-top: 72px;
-  width: 100%;
 }
 
 .image {
   margin: 16px auto;
   display: block;
-  width: 100%;
-  background-color: #fff;
+  height: 320px;
+  object-fit: cover;
+
+  @media screen and (max-width: $min-width) {
+    height: 200px;
+  }
 }
 
 .buttonArea {

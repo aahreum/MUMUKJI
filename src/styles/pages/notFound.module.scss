@@ -1,0 +1,33 @@
+@use '@/styles/mixins/_font' as font;
+@use '@/styles/mixins/_flex' as flex;
+
+.container {
+  padding: 0 16px;
+  position: relative;
+  height: calc(100vh - 88px);
+  width: 100%;
+  @include flex.flexLayout(column);
+
+  img {
+    width: 246px;
+    height: 290px;
+    margin-bottom: 28px;
+  }
+
+  .title {
+    margin-bottom: 8px;
+    @include font.fontStyle($font-size-3xl, $weight: 800);
+  }
+
+  p {
+    @include font.fontStyle($font-size-m, $line-height-m, $color: $gray-500);
+    text-align: center;
+  }
+
+  a {
+    position: fixed;
+    bottom: 16px;
+    max-width: calc($max-width - 32px);
+    width: calc(100% - 32px);
+  }
+}

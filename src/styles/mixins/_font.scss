@@ -1,0 +1,21 @@
+@use '@/styles/base/_variablesColor' as c;
+@use '@/styles/base/_variablesFont' as f;
+
+// font face
+@mixin fontFace($fontFamily, $weight, $file, $style: normal) {
+  @font-face {
+    font-family: $fontFamily;
+    font-weight: $weight;
+    src: url('@/assets/fonts/#{$file}.woff2') format('woff2');
+    font-style: $style;
+  }
+}
+
+// font style
+@mixin fontStyle($size: f.$font-size-m, $line-height: f.$line-height-s, $weight: 400, $color: c.$gray-700) {
+  font-family: f.$font-main;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  color: $color;
+}

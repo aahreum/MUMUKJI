@@ -1,3 +1,6 @@
+@use '@/styles/mixins/_font' as font;
+@use '@/styles/mixins/_flex' as flex;
+
 .container {
   padding-left: 25px;
   padding-right: 20px;
@@ -6,28 +9,20 @@
   border: 1px solid $primary-300;
   border-radius: 24px;
   background-color: $primary-50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex.flexLayout($y: space-between);
 
   span {
-    font-family: 'SUIT', sans-serif;
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: 700;
-    color: $gray-700;
-  }
-
-  .accent {
-    color: $primary-600;
+    .accent {
+      color: $primary-600;
+    }
+    @include font.fontStyle($size: $font-size-l, $weight: 800);
   }
 
   .rightArea {
-    display: flex;
-    align-items: center;
+    @include flex.flexLayout();
+
     span {
-      font-size: 12px;
-      color: $gray-700;
+      @include font.fontStyle($size: $font-size-xs, $weight: 700);
     }
   }
 }

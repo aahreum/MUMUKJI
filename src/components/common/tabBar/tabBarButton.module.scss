@@ -1,0 +1,24 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
+.container {
+  margin: 16px 30px;
+  @include flex.flexLayout(column);
+  cursor: pointer;
+
+  @media (max-width: $max-width) {
+    margin: 16px 24px;
+  }
+
+  > .buttonText {
+    @include font.fontStyle($size: $font-size-xs, $weight: 700);
+  }
+
+  &.active > svg > path {
+    fill: $primary-500;
+  }
+
+  &.active > .buttonText {
+    color: $primary-500;
+  }
+}

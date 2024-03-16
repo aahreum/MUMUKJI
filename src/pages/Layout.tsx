@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import TabBar from '@/components/common/TabBar'
+import TabBar from '@/components/common/tabBar/TabBar'
 
 const Layout = (): React.ReactElement => {
   return (

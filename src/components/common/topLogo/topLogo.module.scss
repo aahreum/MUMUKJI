@@ -1,14 +1,14 @@
+@use '@/styles/mixins/_flex' as flex;
+
 .container {
-  min-width: $minWidth;
-  max-width: $maxWidth;
+  min-width: $min-width;
+  max-width: $max-width;
   width: 100%;
   height: 72px;
   position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex.flexLayout();
   background-color: $bg-yellow;
 }
