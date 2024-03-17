@@ -4,20 +4,6 @@ const GroupRouletteList = () => {
   return (
     <>
       <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
-      <GroupRouletteButton />
     </>
   )
 }

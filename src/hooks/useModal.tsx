@@ -3,14 +3,15 @@ import { useState } from 'react'
 const useModal = () => {
   const [modalOpen, setModalOpen] = useState(false)
 
-  const rootDiv = document.getElementById('root')!
+  const body = document.body
+
   const openModal = () => {
-    rootDiv.style.overflow = 'hidden'
+    body.style.overflow = 'hidden'
     setModalOpen(true)
   }
 
   const closeModal = () => {
-    rootDiv.style.overflow = 'auto'
+    body.style.overflow = 'auto'
     setModalOpen(false)
   }
 
