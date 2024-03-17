@@ -1,6 +1,7 @@
-import MAIN_MENU_LIST from '@/constants/mainMenuList'
+
 import styles from './chooseMenuModal.module.scss'
 import ModalPotal from '@/components/common/modal/ModalPotal'
+import MAIN_MENU_LIST from '@/constants/mainMenuList'
 import { ChangeEvent, useState } from 'react'
 
 interface chooseMenuModalType {
