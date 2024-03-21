@@ -1,4 +1,3 @@
-
 import styles from './chooseMenuModal.module.scss'
 import ModalPotal from '@/components/common/modal/ModalPotal'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
