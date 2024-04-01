@@ -14,7 +14,7 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-  decorators: (story) => <div style={{ width: '550px' }}>{story()}</div>,
+  decorators: (story) => <div style={{ width: '580px' }}>{story()}</div>,
 } satisfies Meta<typeof Title>
 
 export default meta
