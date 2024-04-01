@@ -1,7 +1,8 @@
+import { ChangeEvent, useState } from 'react'
 import styles from './chooseMenuModal.module.scss'
 import ModalPotal from '@/components/common/modal/ModalPotal'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
-import { ChangeEvent, useState } from 'react'
+import GoBackButton from '../common/goBackButton/GoBackButton'
 
 interface chooseMenuModalType {
   closeModal: () => void
@@ -59,9 +60,7 @@ const ChooseMenuModal = ({ closeModal }: chooseMenuModalType) => {
   return (
     <ModalPotal>
       <div className={styles.container}>
-        <button type="button" onClick={closeModal}>
-          뒤로가기
-        </button>
+        <GoBackButton onClick={closeModal} />
         <h2>어떤 음식을 좋아해?</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           {MAIN_MENU_LIST.map((item) => (
