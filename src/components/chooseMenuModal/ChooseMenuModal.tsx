@@ -62,7 +62,7 @@ const ChooseMenuModal = ({ closeModal }: chooseMenuModalType) => {
     <ModalPotal>
       <div className={styles.container}>
         <GoBackButton onClick={closeModal} />
-        <Title>
+        <Title textAlignCenter={false}>
           어떤 음식을 <br /> 좋아해?
         </Title>
         <form onSubmit={(e) => handleSubmit(e)}>
