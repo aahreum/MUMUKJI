@@ -3,6 +3,7 @@ import styles from './chooseMenuModal.module.scss'
 import ModalPotal from '@/components/common/modal/ModalPotal'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
 import GoBackButton from '../common/goBackButton/GoBackButton'
+import Title from '../common/title/Title'
 
 interface chooseMenuModalType {
   closeModal: () => void
@@ -61,7 +62,9 @@ const ChooseMenuModal = ({ closeModal }: chooseMenuModalType) => {
     <ModalPotal>
       <div className={styles.container}>
         <GoBackButton onClick={closeModal} />
-        <h2>어떤 음식을 좋아해?</h2>
+        <Title>
+          어떤 음식을 <br /> 좋아해?
+        </Title>
         <form onSubmit={(e) => handleSubmit(e)}>
           {MAIN_MENU_LIST.map((item) => (
             <label key={item.id}>

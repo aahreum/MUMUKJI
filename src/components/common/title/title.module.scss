@@ -1,0 +1,9 @@
+@use '@/styles/mixins/_font' as font;
+
+.title {
+  @include font.fontStyle($size: $font-size-4xl, $weight: 800);
+}
+
+.center {
+  text-align: center;
+}
