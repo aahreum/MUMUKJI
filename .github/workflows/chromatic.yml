@@ -13,6 +13,8 @@ on:
 jobs:
   chromatic-storybook-deploy:
     runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
