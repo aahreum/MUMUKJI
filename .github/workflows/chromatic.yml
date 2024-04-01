@@ -33,6 +33,7 @@ jobs:
         run: npm ci
 
       - name: Run Chromatic
+        id: chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
@@ -45,7 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           message: |
-          🚀 storybook-deploy: ${{steps.chromatic.outputs.storybookUrl}}
+          🚀 storybook-deploy: ${{ steps.chromatic.outputs.storybookUrl }}
 
       - name: Publish Summary
-        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
+        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{ steps.chromatic.outputs.buildUrl }} |\n| Storybook Preview | ${{ steps.chromatic.outputs.storybookUrl }} |\n| Component Count | ${{ steps.chromatic.outputs.componentCount }} |" >> $GITHUB_STEP_SUMMARY
