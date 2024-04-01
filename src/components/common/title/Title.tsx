@@ -9,8 +9,8 @@ interface TitleProps {
   textAlignCenter?: boolean
 }
 
-const Title = ({ children, textAlignCenter = false }: TitleProps): React.ReactElement => {
-  return <h2 className={`${styles.title} ${!textAlignCenter ? '' : styles.center}`}>{children}</h2>
+const Title = ({ children, textAlignCenter = true }: TitleProps): React.ReactElement => {
+  return <h2 className={`${styles.title} ${textAlignCenter ? styles.center : ''}`}>{children}</h2>
 }
 
 export default Title
