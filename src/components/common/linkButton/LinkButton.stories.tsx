@@ -17,16 +17,16 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    link: '/abc',
-    label: '링크 이동',
+    link: '/mumukji',
+    label: '페이지 이동 버튼',
     primary: true,
   },
 }
 
 export const Secondary: Story = {
   args: {
-    link: '/abc',
-    label: '링크 이동',
+    link: '/mumukji',
+    label: '페이지 이동 버튼',
     primary: false,
   },
 }
