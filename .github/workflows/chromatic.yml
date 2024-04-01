@@ -41,11 +41,12 @@ jobs:
           exitZeroOnChanges: true
 
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v1
+        uses: thollander/actions-comment-pull-request@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          message: '🚀 storybook-deploy: ${{ steps.chromatic.outputs.storybookUrl }}'
+          message: |
+          🚀 storybook-deploy: ${{ steps.chromatic.outputs.storybookUrl }}
 
       - name: Publish Summary
         run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{ steps.chromatic.outputs.buildUrl }} |\n| Storybook Preview | ${{ steps.chromatic.outputs.storybookUrl }} |\n| Component Count | ${{ steps.chromatic.outputs.componentCount }} |" >> $GITHUB_STEP_SUMMARY
