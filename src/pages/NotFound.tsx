@@ -1,7 +1,7 @@
 import styles from '@/styles/pages/notFound.module.scss'
 import notFoundImg from '/images/notFound.png'
 import TopLogo from '@/components/common/topLogo/TopLogo'
-import LinkButton from '@/components/common/button/LinkButton'
+import LinkButton from '@/components/common/linkButton/LinkButton'
 
 const NotFound = (): React.ReactElement => {
   return (
@@ -13,7 +13,7 @@ const NotFound = (): React.ReactElement => {
         <p>
           요청하신 페이지의 주소가 변경, <br /> 삭제되어 찾을 수 없어요.
         </p>
-        <LinkButton link="/" />
+        <LinkButton label="홈으로 돌아가기" link="/" />
       </div>
     </>
   )
