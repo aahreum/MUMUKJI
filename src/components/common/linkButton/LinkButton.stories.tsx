@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    link: '/abg',
+    link: '/abc',
     label: '링크 이동',
     primary: true,
   },
@@ -25,7 +25,7 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
-    link: '/abg',
+    link: '/abc',
     label: '링크 이동',
     primary: false,
   },
