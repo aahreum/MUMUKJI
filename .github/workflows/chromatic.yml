@@ -1,0 +1,44 @@
+name: 'Chromatic-Storybook Deployment'
+run-name: deploy storybook by ${{ github.actor }}
+
+on:
+  pull_request:
+    branches:
+      - deploy
+    paths:
+      - '**.stories.ts'
+      - '**.stories.tsx'
+      - '**.mdx'
+
+jobs:
+  chromatic-storybook-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cache npm
+        id: npm-cache
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-storybook
+
+      - name: Install npm
+      - if: steps.npm-cache.outputs.cache-hit !== 'true'
+        run: npm ci
+
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: '🚀 storybook-deploy: ${{ steps.chromatic.outputs.storybookUrl }}'
