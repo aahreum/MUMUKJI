@@ -3,7 +3,8 @@ import styles from './chooseMenuModal.module.scss'
 import ModalPotal from '@/components/common/modal/ModalPotal'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
 import GoBackButton from '../common/goBackButton/GoBackButton'
-import Title from '../common/title/Title'
+import Title from '@/components/common/title/Title'
+import FoodCategoryButton from './foodCategoryButton/FoodCategoryButton'
 
 interface chooseMenuModalType {
   closeModal: () => void
@@ -66,12 +67,18 @@ const ChooseMenuModal = ({ closeModal }: chooseMenuModalType) => {
           어떤 음식을 <br /> 좋아해?
         </Title>
         <form onSubmit={(e) => handleSubmit(e)}>
-          {MAIN_MENU_LIST.map((item) => (
-            <label key={item.id}>
-              <input type="checkbox" name={item.theme} checked={checkedTheme[item.theme] || false} onChange={handleCheckboxChange} />
-              {item.theme}
-            </label>
-          ))}
+          <div className={styles.inputCheckboxArea}>
+            {MAIN_MENU_LIST.map((item) => (
+              <FoodCategoryButton
+                key={item.id}
+                theme={item.theme}
+                image={item.image}
+                menu={item.menu}
+                checked={checkedTheme[item.theme] || false}
+                onChange={handleCheckboxChange}
+              />
+            ))}
+          </div>
           <button type="button" onClick={handleCheckAll}>
             전체선택
           </button>
