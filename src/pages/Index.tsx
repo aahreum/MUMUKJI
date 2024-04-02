@@ -1,8 +1,8 @@
 import image from '/images/mainImg.png'
 import styles from '@/styles/pages/index.module.scss'
 import TopLogo from '@/components/common/topLogo/TopLogo'
-import MainRouletteButton from '@/components/rouletteButton/MainRouletteButton'
-import GroupRouletteList from '@/components/rouletteButton/GroupRouletteList'
+import MainRouletteButton from '@/components/mainPage/mainRouletteButton/MainRouletteButton'
+import GroupRouletteList from '@/components/mainPage/groupRouletteButton/GroupRouletteList'
 
 const Index = (): React.ReactElement => {
   return (
