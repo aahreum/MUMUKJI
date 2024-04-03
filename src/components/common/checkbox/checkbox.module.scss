@@ -2,6 +2,7 @@
 @use '@/styles/mixins/_font' as font;
 
 .container {
+  width: fit-content;
   @include flex.flexLayout();
   gap: 8px;
   cursor: pointer;
@@ -12,6 +13,7 @@
     height: 20px;
     border: 2px solid $gray-600;
     border-radius: 4px;
+    cursor: pointer;
 
     &:checked {
       border: none;
@@ -24,6 +26,5 @@
 
   .label {
     @include font.fontStyle($weight: 700, $line-height: $line-height-m);
-    cursor: pointer;
   }
 }
