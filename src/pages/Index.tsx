@@ -1,4 +1,3 @@
-import image from '/images/mainImg.png'
 import styles from '@/styles/pages/index.module.scss'
 import TopLogo from '@/components/common/topLogo/TopLogo'
 import MainRouletteButton from '@/components/mainPage/mainRouletteButton/MainRouletteButton'
@@ -9,7 +8,7 @@ const Index = (): React.ReactElement => {
     <>
       <TopLogo />
       <main className={styles.container}>
-        <img className={styles.image} src={image} alt="메인이미지" />
+        <img className={styles.image} src="/images/main.png" alt="메인 이미지" />
         <div className={styles.buttonArea}>
           <MainRouletteButton />
           <GroupRouletteList />
