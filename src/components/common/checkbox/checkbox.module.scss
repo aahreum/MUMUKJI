@@ -1,0 +1,29 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
+.container {
+  @include flex.flexLayout();
+  gap: 8px;
+  cursor: pointer;
+
+  .checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $gray-600;
+    border-radius: 4px;
+
+    &:checked {
+      border: none;
+      background-image: url('@/assets/icons/check.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: $secondary-500;
+    }
+  }
+
+  .label {
+    @include font.fontStyle($weight: 700, $line-height: $line-height-m);
+    cursor: pointer;
+  }
+}
