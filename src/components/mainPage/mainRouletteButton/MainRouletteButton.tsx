@@ -4,11 +4,11 @@ import ChooseMenuModal from '@/components/chooseMenuModal/ChooseMenuModal'
 import useModal from '@/hooks/useModal'
 
 const MainRouletteButton = () => {
-  const { modalOpen, openModal, closeModal } = useModal()
+  const { isOpen, openModal, closeModal } = useModal()
 
   return (
     <>
-      {modalOpen && <ChooseMenuModal closeModal={closeModal} />}
+      {isOpen && <ChooseMenuModal close={closeModal} />}
       <button className={styles.container} type="button" onClick={openModal}>
         <span>
           <span className={styles.accent}>머먹을지</span> 안 정했어?
