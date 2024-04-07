@@ -3,9 +3,9 @@ import Logo from '@/assets/icons/logo.svg?react'
 
 const TopLogo = (): React.ReactElement => {
   return (
-    <div className={styles.container}>
+    <h1 className={styles.container}>
       <Logo />
-    </div>
+    </h1>
   )
 }
 
