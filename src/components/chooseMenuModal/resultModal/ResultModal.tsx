@@ -2,7 +2,7 @@ import Button from '@/components/common/button/Button'
 import styles from './resultModal.module.scss'
 import FullModalCotainer from '@/components/common/modal/FullModalCotainer'
 import Title from '@/components/common/title/Title'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface ResultModalProps {
   menu: string
@@ -12,6 +12,14 @@ interface ResultModalProps {
 
 const ResultModal = ({ menu, theme, close }: ResultModalProps) => {
   const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 1500)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <FullModalCotainer onClick={close}>
