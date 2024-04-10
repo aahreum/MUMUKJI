@@ -26,10 +26,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-storybook
-
-      - name: Install npm
-        if: steps.cache.outputs.cache-hit != 'true'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Run Chromatic
@@ -45,8 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          message: |
-          🚀 storybook-deploy: ${{ steps.chromatic.outputs.storybookUrl }}
+          message: '🚀 storybook-deploy: ${{ steps.chromatic.outputs.storybookUrl }}'
 
       - name: Publish Summary
         run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{ steps.chromatic.outputs.buildUrl }} |\n| Storybook Preview | ${{ steps.chromatic.outputs.storybookUrl }} |\n| Component Count | ${{ steps.chromatic.outputs.componentCount }} |" >> $GITHUB_STEP_SUMMARY
