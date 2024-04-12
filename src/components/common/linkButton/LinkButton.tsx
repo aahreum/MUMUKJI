@@ -2,14 +2,11 @@ import { Link } from 'react-router-dom'
 import styles from './linkButton.module.scss'
 
 interface linkButtonProps {
-  /** 이동 경로 입력
-   */
+  /** 이동 경로 입력 */
   link: string
-  /** 버튼 타입 선택
-   */
+  /** 버튼 타입 선택 */
   primary?: boolean
-  /** 버튼 라벨
-   */
+  /** 버튼 라벨 */
   label: string
 }
 
