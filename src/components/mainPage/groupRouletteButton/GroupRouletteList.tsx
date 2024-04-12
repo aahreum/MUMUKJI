@@ -1,9 +1,9 @@
-import GroupRouletteButton from './GroupRouletteButton'
+import Button from '@/components/common/button/Button'
 
 const GroupRouletteList = () => {
   return (
     <>
-      <GroupRouletteButton />
+      <Button label="그룹명" primary={false} light={true} />
     </>
   )
 }
