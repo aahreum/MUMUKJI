@@ -6,10 +6,10 @@ const meta = {
   title: 'Components/common/Button',
   component: Button,
   parameters: {
-    componentSubtitle: '머먹지에서 공통으로 사용하는 버튼 컴포넌트입니다.',
+    componentSubtitle: '공통으로 사용하는 버튼 컴포넌트입니다.',
     docs: {
       description: {
-        component: `<li>label: 버튼 텍스트를 입력합니다.</li><li>primary: 버튼 스타일 값으로 <span class='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>light: 버튼 텍스트 스타일 값으로 <span class='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>type: 버튼 타입 기본 값은 <span class='css-o1d7ko css-in3yi3'>button</span>입니다.</li>
+        component: `<li>label: 버튼 텍스트를 입력합니다.</li><li>primary: 버튼 스타일 값으로 <span className='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>light: 버튼 텍스트 스타일 값으로 <span className='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>type: 버튼 타입 기본 값은 <span className='css-o1d7ko css-in3yi3'>button</span>입니다.</li>
         
         `,
       },
