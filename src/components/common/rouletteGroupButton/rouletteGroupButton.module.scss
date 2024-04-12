@@ -1,16 +1,16 @@
 @use '@/styles/mixins/_font' as font;
 @use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_ellipsis' as e;
 
 .container {
-  padding-left: 25px;
-  padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 16px;
   width: 100%;
   height: 68px;
   border: 1px solid $primary-200;
   border-radius: 24px;
   background-color: $primary-50;
   @include flex.flexLayout($y: space-between);
-  gap: 16px;
 
   .leftArea {
     @include flex.flexLayout();
@@ -24,12 +24,15 @@
         @include font.fontStyle($size: $font-size-l, $weight: 800);
       }
       .desc {
+        text-align: left;
+        @include e.ellipsis($width: 284px);
         @include font.fontStyle($size: $font-size-xs, $weight: 500, $color: $gray-500);
       }
     }
   }
 
   .rightArea {
+    flex-shrink: 0;
     @include flex.flexLayout();
     gap: 4px;
 
@@ -40,6 +43,7 @@
 }
 
 .icon {
+  padding-left: 16px;
   background-color: $gray-0;
   border-color: $gray-200;
 }
