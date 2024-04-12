@@ -1,21 +1,26 @@
 import { useState } from 'react'
+import { modalCountState } from '@/recoil/modalCount'
+import { useRecoilState } from 'recoil'
 
 const useModal = () => {
-  const [modalOpen, setModalOpen] = useState(false)
-
-  const body = document.body
+  const [isOpen, setisOpen] = useState(false)
+  const [modalCount, setModalCount] = useRecoilState(modalCountState)
 
   const openModal = () => {
-    body.style.overflow = 'hidden'
-    setModalOpen(true)
+    setModalCount((prev) => prev + 1)
+    document.body.style.overflow = 'hidden'
+    setisOpen(true)
   }
 
   const closeModal = () => {
-    body.style.overflow = 'auto'
-    setModalOpen(false)
+    setModalCount((prev) => prev - 1)
+    if (modalCount <= 1) {
+      document.body.style.overflow = 'auto'
+    }
+    setisOpen(false)
   }
 
-  return { modalOpen, openModal, closeModal }
+  return { isOpen, openModal, closeModal }
 }
 
 export default useModal

@@ -13,6 +13,8 @@ on:
 jobs:
   chromatic-storybook-deploy:
     runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,22 +26,23 @@ jobs:
         uses: actions/cache@v4
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-storybook
-
-      - name: Install npm
-        if: steps.cache.outputs.cache-hit != 'true'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Run Chromatic
+        id: chromatic
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           exitZeroOnChanges: true
 
-      - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish Summary
+        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{ steps.chromatic.outputs.buildUrl }} |\n| Storybook Preview | ${{ steps.chromatic.outputs.storybookUrl }} |\n| Component Count | ${{ steps.chromatic.outputs.componentCount }} |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Discord Webhook
+        uses: tsickert/discord-webhook@v5.3.0
         with:
-          message: '🚀 storybook-deploy: ${{ steps.chromatic.outputs.storybookUrl }}'
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: 'storybook link -> ${{ steps.chromatic.outputs.storybookUrl }}'

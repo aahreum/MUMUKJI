@@ -1,0 +1,64 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
+@keyframes dot-animation {
+  0% {
+    content: 'Hmm.';
+  }
+  30% {
+    content: 'Hmm..';
+  }
+  60% {
+    content: 'Hmm...';
+  }
+  100% {
+    content: 'Hmm.';
+  }
+}
+
+.container {
+  padding-top: 54px;
+  width: 100%;
+  @include flex.flexLayout($direction: column);
+
+  .bubbleArea {
+    position: relative;
+    margin-top: 80px;
+    width: 200px;
+    height: 71px;
+    @include flex.flexLayout();
+    border-radius: 24px;
+    background-color: $tertiary-100;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 48px;
+      bottom: -16px;
+      border: 8px solid $tertiary-100;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid transparent;
+    }
+
+    .hmm::after {
+      content: '';
+      @include font.fontStyle($size: $font-size-4xl, $weight: 800, $color: $tertiary-700);
+      animation: dot-animation 1.5s infinite;
+    }
+  }
+
+  .imageArea {
+    margin-top: 52px;
+    width: 220px;
+    height: 220px;
+  }
+
+  .buttonArea {
+    width: calc(100% - 32px);
+    bottom: 16px;
+    position: absolute;
+
+    @include flex.flexLayout();
+    gap: 8px;
+  }
+}

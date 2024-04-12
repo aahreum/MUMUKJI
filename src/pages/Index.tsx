@@ -1,17 +1,20 @@
-import image from '/images/mainImg.png'
 import styles from '@/styles/pages/index.module.scss'
+import useModal from '@/hooks/useModal'
 import TopLogo from '@/components/common/topLogo/TopLogo'
-import MainRouletteButton from '@/components/rouletteButton/MainRouletteButton'
-import GroupRouletteList from '@/components/rouletteButton/GroupRouletteList'
+import RouletteGroupButton from '@/components/common/rouletteGroupButton/RouletteGroupButton'
+import GroupRouletteList from '@/components/mainPage/GroupRouletteList'
+import ChooseMenuModal from '@/components/chooseMenuModal/ChooseMenuModal'
 
 const Index = (): React.ReactElement => {
+  const { isOpen, openModal, closeModal } = useModal()
   return (
     <>
+      {isOpen && <ChooseMenuModal close={closeModal} />}
       <TopLogo />
       <main className={styles.container}>
-        <img className={styles.image} src={image} alt="메인이미지" />
+        <img className={styles.image} src="/images/main.png" alt="메인 이미지" />
         <div className={styles.buttonArea}>
-          <MainRouletteButton />
+          <RouletteGroupButton title="안 정했어?" titleAcc="머먹을지" desc="랜덤으로 추천해줄게" rightText="먹지추천받기" onClick={openModal} />
           <GroupRouletteList />
         </div>
       </main>

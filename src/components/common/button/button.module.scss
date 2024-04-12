@@ -1,0 +1,18 @@
+@use '@/styles/base/_commonStyleRules' as *;
+
+.button {
+  @extend %button;
+
+  &:disabled {
+    background-color: $gray-100;
+    color: $gray-400;
+  }
+}
+
+.sub {
+  @extend %sub;
+}
+
+.light {
+  font-weight: 500;
+}
