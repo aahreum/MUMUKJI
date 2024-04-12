@@ -1,9 +1,0 @@
-@use '@/styles/mixins/_font' as font;
-
-.container {
-  height: 68px;
-  border: 1px solid $gray-200;
-  border-radius: 24px;
-  background-color: $gray-0;
-  @include font.fontStyle($weight: 500);
-}
