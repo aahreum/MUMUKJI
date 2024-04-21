@@ -30,7 +30,7 @@ const ResultModal = ({ menu, theme, close }: ResultModalProps) => {
             <div className={styles.bubbleArea}>
               <span className={styles.hmm} />
             </div>
-            <img className={styles.imageArea} src="/images/loading.png" alt="" />
+            <img className={styles.imageArea} src="/images/rouletteLoading.png" alt="로딩" />
             <div className={styles.buttonArea}>
               <Button disabled label="다시 뽑아줘" />
               <Button disabled label="이거 먹을래!" />
