@@ -81,7 +81,7 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
                 <FoodCategoryButton
                   key={item.id}
                   theme={item.theme}
-                  image={item.image}
+                  icon={item.icon}
                   menu={item.menu}
                   checked={checkedTheme[item.theme] || false}
                   onChange={handleCheckboxChange}
