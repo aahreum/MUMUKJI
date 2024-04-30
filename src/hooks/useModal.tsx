@@ -8,14 +8,12 @@ const useModal = () => {
 
   const openModal = () => {
     setModalCount((prev) => prev + 1)
-    console.log(modalCount)
     document.body.style.overflow = 'hidden'
     setisOpen(true)
   }
 
   const closeModal = () => {
     setModalCount((prev) => prev - 1)
-    console.log(modalCount)
     if (modalCount <= 1) {
       document.body.style.overflow = 'auto'
     }
