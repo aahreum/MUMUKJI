@@ -1,6 +1,7 @@
 @use '@/styles/mixins/_flex' as flex;
 
 .container {
+  width: 100%;
   padding-top: 24px;
 
   form {
@@ -10,8 +11,8 @@
   .inputCheckboxArea {
     padding-bottom: 16px;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
   .buttonArea {
@@ -24,5 +25,12 @@
     gap: 11px;
     border-top: 1px solid $gray-200;
     background-color: $bg-yellow;
+  }
+
+  @media screen and (max-width: 480px) {
+    .inputCheckboxArea {
+      min-width: 160px;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
