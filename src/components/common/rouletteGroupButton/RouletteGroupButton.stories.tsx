@@ -40,6 +40,7 @@ export const CustomRoulette: Story = {
     desc: '그룹 목록 미리보기, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점',
     onClick: action('Button clicked'),
     primary: false,
+    rightText: null,
   },
 }
 
