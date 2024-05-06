@@ -23,23 +23,33 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Basic: Story = {
+export const MainRoulette: Story = {
   args: {
     title: '안 정했어?',
     titleAcc: '머먹을지',
     desc: '랜덤으로 추천해줄게',
     rightText: '먹지추천받기',
-    icon: null,
     onClick: action('Button clicked'),
+    primary: true,
   },
 }
 
-export const Icon: Story = {
+export const CustomRoulette: Story = {
+  args: {
+    title: '그룹명 최대 15글자',
+    desc: '그룹 목록 미리보기, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점',
+    onClick: action('Button clicked'),
+    primary: false,
+  },
+}
+
+export const EditRoulette: Story = {
   args: {
     title: '그룹명 최대 15글자',
     desc: '그룹 목록 미리보기, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점,',
     rightText: '목록 편집',
     icon: <CloseCircle />,
     onClick: action('Button clicked'),
+    primary: false,
   },
 }
