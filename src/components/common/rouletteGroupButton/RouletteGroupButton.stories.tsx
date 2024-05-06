@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import RouletteGroupButton from './RouletteGroupButton'
-import CloseCircle from '@/assets/icons/close_circle.svg?react'
 
 const meta = {
   title: 'Components/common/RouletteGroupButton',
@@ -41,16 +40,5 @@ export const CustomRoulette: Story = {
     onClick: action('Button clicked'),
     primary: false,
     rightText: null,
-  },
-}
-
-export const EditRoulette: Story = {
-  args: {
-    title: '그룹명 최대 15글자',
-    desc: '그룹 목록 미리보기, 백종원 홍콩반점 선릉점, 백종원 홍콩반점 선릉점,',
-    rightText: '목록 편집',
-    icon: <CloseCircle />,
-    onClick: action('Button clicked'),
-    primary: false,
   },
 }
