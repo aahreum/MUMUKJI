@@ -50,7 +50,8 @@
   .resultBubble {
     position: relative;
     margin-top: 28px;
-    padding: 16px 51px;
+    padding: 16px;
+    max-width: 288px;
     min-width: 200px;
     border-radius: 24px;
     background-color: $tertiary-500;
@@ -59,7 +60,7 @@
     &::after {
       content: '';
       position: absolute;
-      left: 48px;
+      left: calc(50% - 32px);
       bottom: -16px;
       border: 8px solid $tertiary-500;
       border-bottom: 8px solid transparent;
@@ -72,7 +73,6 @@
 
     .menu {
       @include font.fontStyle($size: $font-size-4xl, $weight: 800, $color: $gray-0);
-      word-break: keep-all;
     }
   }
 
