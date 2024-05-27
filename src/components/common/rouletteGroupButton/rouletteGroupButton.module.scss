@@ -11,39 +11,35 @@
   border-radius: 24px;
   background-color: $primary-50;
   @include flex.flexLayout($y: space-between);
+  text-align: left;
 
   .leftArea {
-    @include flex.flexLayout();
-    gap: 8px;
-    .textArea {
-      @include flex.flexLayout($direction: column, $x: flex-start);
-      .title {
-        .accent {
-          color: $primary-600;
-        }
-        @include font.fontStyle($size: $font-size-l, $weight: 800);
+    width: calc(100% - 36px);
+
+    .title {
+      .accent {
+        color: $primary-600;
       }
-      .desc {
-        text-align: left;
-        @include e.ellipsis($width: 284px);
-        @include font.fontStyle($size: $font-size-xs, $weight: 500, $color: $gray-500);
-      }
+      @include font.fontStyle($size: $font-size-l, $weight: 800);
+    }
+    .desc {
+      @include e.ellipsis($width: auto);
+      @include font.fontStyle($size: $font-size-xs, $weight: 500, $color: $gray-500);
     }
   }
 
   .rightArea {
     flex-shrink: 0;
     @include flex.flexLayout();
-    gap: 4px;
 
-    span {
+    p {
       @include font.fontStyle($size: $font-size-m, $weight: 500, $color: $gray-500);
+      margin-right: 4px;
     }
   }
 }
 
-.icon {
-  padding-left: 16px;
+.sub {
   background-color: $gray-0;
   border-color: $gray-200;
 }
