@@ -39,37 +39,52 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
 
   const chooseMenu = (menuArrays: string[][]) => {
     const combinedMenu = [...menuArrays.flat()]
-    const randomIndex = Math.floor(Math.random() * combinedMenu.length)
-    const chosenMenu = combinedMenu[randomIndex]
+    const filteredMenu = chosenValue.menu !== '' ? combinedMenu.filter((menu) => menu !== chosenValue.menu) : combinedMenu
+
+    if (filteredMenu.length === 0) {
+      const chosenTheme = MAIN_MENU_LIST.find((item) => item.menu.includes(chosenValue.menu))!.theme
+      return { menu: chosenValue.menu, theme: chosenTheme }
+    }
+
+    const randomIndex = Math.floor(Math.random() * filteredMenu.length)
+    const chosenMenu = filteredMenu[randomIndex]
     const chosenTheme = MAIN_MENU_LIST.find((item) => item.menu.includes(chosenMenu))!.theme
 
     return { menu: chosenMenu, theme: chosenTheme }
   }
 
+  const getMenuList = () => {
+    const checkKeys = Object.keys(checkedTheme).filter((key) => checkedTheme[key])
+    return MAIN_MENU_LIST.filter((item) => checkKeys.includes(item.theme)).map((item) => item.menu)
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
-    const checkKeys = Object.keys(checkedTheme).filter((key) => checkedTheme[key])
-    const menuList: string[][] = []
-    MAIN_MENU_LIST.forEach((item) => {
-      checkKeys.forEach((key) => {
-        if (key === item.theme) {
-          menuList.push(item.menu)
-          return
-        }
-      })
-    })
-
+    const menuList: string[][] = getMenuList()
     setChosenValue(chooseMenu(menuList))
-    setCheckedTheme({})
     openModal()
+  }
+
+  const handleRetry = () => {
+    const menuList: string[][] = getMenuList()
+    setChosenValue(chooseMenu(menuList))
   }
 
   const isDisabled = Object.keys(checkedTheme).length === 0 || Object.values(checkedTheme).every((value) => value === false)
 
   return (
     <>
-      {isOpen && <ResultModal menu={chosenValue.menu} theme={chosenValue.theme} close={closeModal} />}
+      {isOpen && (
+        <ResultModal
+          menu={chosenValue.menu}
+          theme={chosenValue.theme}
+          close={() => {
+            closeModal()
+            setCheckedTheme({})
+          }}
+          onRetry={handleRetry}
+        />
+      )}
       <FullModalCotainer onClick={close}>
         <div className={styles.container}>
           <Title textAlignCenter={false}>
