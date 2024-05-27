@@ -1,9 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Index from '@/pages/Index'
-import Edit from '@/pages/Edit'
+// import Edit from '@/pages/Edit'
 import Layout from '@/pages/Layout'
-import List from '@/pages/List'
+// import List from '@/pages/List'
 import NotFound from '@/pages/NotFound'
+import InProgress from '@/pages/InProgress'
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,14 @@ const router = createBrowserRouter([
       {
         id: 'edit',
         path: '/edit',
-        element: <Edit />,
+        // element: <Edit />,
+        element: <InProgress />,
       },
       {
         id: 'list',
         path: '/list',
-        element: <List />,
+        // element: <List />,
+        element: <InProgress />,
       },
     ],
   },

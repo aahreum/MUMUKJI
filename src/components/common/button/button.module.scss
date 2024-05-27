@@ -4,6 +4,7 @@
   @extend %button;
 
   &:disabled {
+    border: none;
     background-color: $gray-100;
     color: $gray-400;
   }
