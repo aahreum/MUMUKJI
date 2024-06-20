@@ -32,24 +32,27 @@ const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
   return (
     <FullModalCotainer onClick={close}>
       <div className={styles.container}>
-        {loading ? (
-          <>
-            <Title>음식 고민중...</Title>
-            <div className={styles.loadingBubble}>
-              <span className={styles.hmm} />
-            </div>
-            <img className={styles.image} src="/images/rouletteLoading.png" alt="로딩" />
-          </>
-        ) : (
-          <>
-            <Title>이거 어때?</Title>
-            <div className={styles.resultBubble}>
-              <p className={styles.theme}>{theme}</p>
-              <p className={styles.menu}>{menu}</p>
-            </div>
-            <img className={styles.image} src="/images/rouletteResult.png" alt="결과" />
-          </>
-        )}
+        <div className={styles.contentsArea}>
+          {loading ? (
+            <>
+              <Title>음식 고민중...</Title>
+              <div className={styles.loadingBubble}>
+                <span className={styles.hmm} />
+              </div>
+              <img className={styles.image} src="/images/rouletteLoading.png" alt="로딩" />
+            </>
+          ) : (
+            <>
+              <Title>이거 어때?</Title>
+              <div className={styles.resultBubble}>
+                <p className={styles.theme}>{theme}</p>
+                <p className={styles.menu}>{menu}</p>
+              </div>
+              <img className={styles.image} src="/images/rouletteResult.png" alt="결과" />
+            </>
+          )}
+        </div>
+
         <div className={styles.buttonArea}>
           <Button
             disabled={loading}
