@@ -1,0 +1,27 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
+.emptyContainer {
+  .emptyContentsArea {
+    position: absolute;
+    left: 0;
+    top: 45%;
+    transform: translateY(-50%);
+    text-align: center;
+    .title {
+      margin-top: 7px;
+      @include font.fontStyle($size: $font-size-2xl, $weight: 800, $color: $gray-700);
+    }
+    .desc {
+      margin-top: 12px;
+      @include font.fontStyle($size: $font-size-m, $weight: 400, $color: $gray-500);
+    }
+  }
+  button {
+    position: absolute;
+    z-index: 2;
+    bottom: 16px;
+    max-width: calc($max-width - 32px);
+    width: calc(100% - 32px);
+  }
+}
