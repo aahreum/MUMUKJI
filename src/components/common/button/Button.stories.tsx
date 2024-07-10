@@ -26,8 +26,8 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     label: '버튼',
-    primary: true,
-    secondary: false,
+    size: 'l',
+    color: 'primary',
     light: false,
     type: 'button',
     disabled: false,
@@ -38,8 +38,8 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     label: '버튼',
-    primary: false,
-    secondary: true,
+    size: 'm',
+    color: 'secondary',
     light: false,
     type: 'button',
     disabled: false,
@@ -50,8 +50,8 @@ export const Secondary: Story = {
 export const Basic: Story = {
   args: {
     label: '버튼',
-    primary: false,
-    secondary: false,
+    size: 's',
+    color: 'basic',
     light: false,
     type: 'button',
     disabled: false,
@@ -62,8 +62,8 @@ export const Basic: Story = {
 export const Light: Story = {
   args: {
     label: '버튼',
-    primary: false,
-    secondary: false,
+    size: 's',
+    color: 'basic',
     light: true,
     type: 'button',
     disabled: false,
