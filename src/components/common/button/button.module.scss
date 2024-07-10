@@ -1,7 +1,7 @@
 @use '@/styles/base/_commonStyleRules' as *;
 
 .button {
-  @extend %button;
+  @extend %buttonPrimary;
 
   &:disabled {
     border: none;
@@ -10,8 +10,12 @@
   }
 }
 
-.sub {
-  @extend %sub;
+.secondary {
+  @extend %buttonSecondary;
+}
+
+.basic {
+  @extend %buttonBasic;
 }
 
 .light {
