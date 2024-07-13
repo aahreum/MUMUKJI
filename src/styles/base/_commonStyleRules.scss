@@ -1,4 +1,5 @@
 @use '@/styles/base/_variablesColor' as *;
+@use '@/styles/base/_variablesFont' as *;
 @use '@/styles/mixins/_font' as font;
 
 %buttonPrimary {
@@ -6,11 +7,15 @@
   height: 64px;
   border-radius: 24px;
   background-color: $primary-500;
-  @include font.fontStyle($weight: 800, $color: $gray-0);
+  @include font.fontStyle($weight: 800, $color: $gray-0, $size: $font-size-l);
 }
 
 %buttonSecondary {
   background-color: $secondary-500;
+}
+
+%buttonNegative {
+  background-color: $negative-500;
 }
 
 %buttonBasic {
