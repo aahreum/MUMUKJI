@@ -9,7 +9,7 @@ const meta = {
     componentSubtitle: '공통으로 사용하는 버튼 컴포넌트입니다.',
     docs: {
       description: {
-        component: `<li>label: 버튼 텍스트를 입력합니다.</li><li>primary, secondary: 버튼 스타일 값으로 <span className='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>light: 버튼 텍스트 스타일 값으로 <span className='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>type: 버튼 타입 기본 값은 <span className='css-o1d7ko css-in3yi3'>button</span>입니다.</li>
+        component: `<li>label: 버튼 텍스트를 입력합니다.</li><li>size: 버튼 크기 값으로 <span className='css-o1d7ko css-in3yi3'>'s' | 'm' | 'l'</span> 중 하나를 선택할 수 있습니다.</li><li>color: 버튼 컬러 값으로 <span className='css-o1d7ko css-in3yi3'>'primary' | 'secondary' | 'negative' | 'basic'</span> 중 하나를 선택할 수 있습니다.</li><li>light: 버튼 텍스트 스타일 값으로 <span className='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>type: 버튼 타입 기본 값은 <span className='css-o1d7ko css-in3yi3'>button</span>입니다.</li>
         
         `,
       },
