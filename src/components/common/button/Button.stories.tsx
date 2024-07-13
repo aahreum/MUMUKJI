@@ -38,8 +38,20 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     label: '버튼',
-    size: 'm',
+    size: 'l',
     color: 'secondary',
+    light: false,
+    type: 'button',
+    disabled: false,
+    onClick: action('Button clicked'),
+  },
+}
+
+export const Negative: Story = {
+  args: {
+    label: '버튼',
+    size: 'l',
+    color: 'negative',
     light: false,
     type: 'button',
     disabled: false,
@@ -50,7 +62,7 @@ export const Secondary: Story = {
 export const Basic: Story = {
   args: {
     label: '버튼',
-    size: 's',
+    size: 'l',
     color: 'basic',
     light: false,
     type: 'button',
@@ -62,7 +74,7 @@ export const Basic: Story = {
 export const Light: Story = {
   args: {
     label: '버튼',
-    size: 's',
+    size: 'l',
     color: 'basic',
     light: true,
     type: 'button',
