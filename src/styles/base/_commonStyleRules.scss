@@ -14,6 +14,10 @@
   background-color: $secondary-500;
 }
 
+%buttonNegative {
+  background-color: $negative-500;
+}
+
 %buttonBasic {
   border: 1px solid $gray-200;
   background-color: $gray-0;
