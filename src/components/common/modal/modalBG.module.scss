@@ -1,0 +1,13 @@
+.container {
+  position: fixed;
+  padding: 0 16px;
+  min-width: $min-width;
+  max-width: $max-width;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $dimmed-color;
+  z-index: 99;
+}
