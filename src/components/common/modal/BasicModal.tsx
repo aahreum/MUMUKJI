@@ -2,14 +2,15 @@ import styles from './basicModal.module.scss'
 import Button from '@/components/common/button/Button'
 import ModalBG from './ModalBG'
 import ModalPotal from './ModalPotal'
+import { buttonColorTypes } from '@/types/buttonColorTypes'
 
 interface BasicModalProps {
   title: React.ReactNode
   desc: React.ReactNode
-  firstBtnColor: 'basic' | 'secondary' | 'primary'
+  firstBtnColor: buttonColorTypes
   firstBtnLabel: string
   firstBtnOnClick: () => void
-  secondBtnColor?: 'basic' | 'secondary' | 'primary'
+  secondBtnColor?: buttonColorTypes
   secondBtnLabel?: string
   secondBtnOnClick?: () => void
 }
