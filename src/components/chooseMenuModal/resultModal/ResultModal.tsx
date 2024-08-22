@@ -56,8 +56,8 @@ const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
         <div className={styles.buttonArea}>
           <Button
             disabled={loading}
-            primary={false}
             label="다시 뽑아줘"
+            color="primary"
             onClick={() => {
               setLoading(true)
               onRetry()
