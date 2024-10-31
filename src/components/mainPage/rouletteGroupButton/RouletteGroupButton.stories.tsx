@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions'
 import RouletteGroupButton from './RouletteGroupButton'
 
 const meta = {
-  title: 'Components/common/RouletteGroupButton',
+  title: 'Components/mainPage/RouletteGroupButton',
   component: RouletteGroupButton,
   parameters: {
     componentSubtitle: '메인 룰렛 버튼, 그룹 룰렛 편집 버튼에 사용되는 컴포넌트입니다.',

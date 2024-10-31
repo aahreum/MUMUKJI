@@ -1,5 +1,5 @@
 import styles from './groupRouletteList.module.scss'
-import RouletteGroupButton from '../common/rouletteGroupButton/RouletteGroupButton'
+import RouletteGroupButton from './rouletteGroupButton/RouletteGroupButton'
 
 const GroupRouletteList = () => {
   const groupData = localStorage.getItem('groupData')

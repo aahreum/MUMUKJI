@@ -1,7 +1,7 @@
 import styles from '@/styles/pages/index.module.scss'
 import useModal from '@/hooks/useModal'
 import TopLogo from '@/components/common/topLogo/TopLogo'
-import RouletteGroupButton from '@/components/common/rouletteGroupButton/RouletteGroupButton'
+import RouletteGroupButton from '@/components/mainPage/rouletteGroupButton/RouletteGroupButton'
 import GroupRouletteList from '@/components/mainPage/GroupRouletteList'
 import ChooseMenuModal from '@/components/chooseMenuModal/ChooseMenuModal'
 import { useRecoilValue } from 'recoil'
