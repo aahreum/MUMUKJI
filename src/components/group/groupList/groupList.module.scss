@@ -1,0 +1,7 @@
+@use '@/styles/mixins/_flex' as flex;
+
+.container {
+  margin: 12px 0;
+  @include flex.flexLayout($direction: column);
+  gap: 12px;
+}
