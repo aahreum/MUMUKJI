@@ -22,12 +22,12 @@ const router = createBrowserRouter([
         // element: <List />,
         element: <InProgress />,
       },
+      {
+        id: 'group',
+        path: '/group',
+        element: <Group />,
+      },
     ],
-  },
-  {
-    id: 'group',
-    path: '/group',
-    element: <Group />,
   },
   {
     id: 'notFound',
