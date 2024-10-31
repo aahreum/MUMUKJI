@@ -57,7 +57,7 @@ const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
           <Button
             disabled={loading}
             label="다시 뽑아줘"
-            color="primary"
+            color="basic"
             onClick={() => {
               setLoading(true)
               onRetry()
