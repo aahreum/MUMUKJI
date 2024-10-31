@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Index from '@/pages/Index'
-import Edit from '@/pages/Edit'
+import Group from '@/pages/group'
 import Layout from '@/pages/Layout'
 // import List from '@/pages/List'
 import NotFound from '@/pages/NotFound'
@@ -25,9 +25,9 @@ const router = createBrowserRouter([
     ],
   },
   {
-    id: 'edit',
-    path: '/edit',
-    element: <Edit />,
+    id: 'group',
+    path: '/group',
+    element: <Group />,
   },
   {
     id: 'notFound',

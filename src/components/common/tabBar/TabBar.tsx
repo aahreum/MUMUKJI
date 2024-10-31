@@ -25,7 +25,7 @@ const TabBar = () => {
     {
       icon: EditGroupIcon,
       menu: '그룹 목록',
-      url: '/edit',
+      url: '/group',
     },
   ]
 
