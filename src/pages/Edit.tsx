@@ -30,7 +30,7 @@ const Edit = () => {
           secondBtnOnClick={closeModal}
         />
       )}
-      <Header title="그룹 편집" />
+      <Header title="그룹 목록" />
       <div className={styles.emptyContainer}>
         <div className={styles.emptyContentsArea}>
           <img src={emptyImg} alt="emptyImg" />
