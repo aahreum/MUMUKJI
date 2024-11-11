@@ -8,11 +8,12 @@ import useModal from '@/hooks/useModal'
 interface ResultModalProps {
   menu: string
   theme: string
+  icon: string
   close: () => void
   onRetry: () => void
 }
 
-const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
+const ResultModal = ({ menu, theme, close, icon, onRetry }: ResultModalProps) => {
   const [loading, setLoading] = useState(true)
   const { closeAllModal } = useModal()
 
@@ -45,6 +46,7 @@ const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
             <>
               <Title>이거 어때?</Title>
               <div className={styles.resultBubble}>
+                <img width={40} height={40} src={icon} alt={theme} />
                 <p className={styles.theme}>{theme}</p>
                 <p className={styles.menu}>{menu}</p>
               </div>
