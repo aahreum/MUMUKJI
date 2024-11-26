@@ -1,6 +1,6 @@
 import styles from './basicModal.module.scss'
 import Button from '@/components/common/button/Button'
-import ModalBG from './ModalBG'
+import ModalBG from './ModalDimmed'
 import ModalPotal from './ModalPotal'
 import { buttonColorTypes } from '@/types/buttonColorTypes'
 
