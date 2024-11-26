@@ -21,20 +21,30 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
   const { isOpen, openModal, closeModal } = useModal()
   const [checkedTheme, setCheckedTheme] = useState<checkThemeType>({})
   const [checkAll, setCheckAll] = useState(false)
-  const [chosenValue, setChosenValue] = useState({ theme: '', menu: '' })
+  const [chosenValue, setChosenValue] = useState({ theme: '', menu: '', icon: '' })
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target
-    setCheckedTheme({ ...checkedTheme, [name]: checked })
+    const newCheckedTheme = { ...checkedTheme, [name]: checked }
+    setCheckedTheme(newCheckedTheme)
+
+    if (checked) {
+      const allSelected = MAIN_MENU_LIST.every((item) => newCheckedTheme[item.theme])
+      if (allSelected) setCheckAll(true)
+    } else {
+      setCheckAll(false)
+    }
   }
 
   const handleCheckAll = () => {
-    const newCheckedTheme: checkThemeType = {}
-    MAIN_MENU_LIST.forEach((item) => {
-      newCheckedTheme[item.theme] = !checkAll
-    })
+    const newCheckedValue = !checkAll
+    const newCheckedTheme = MAIN_MENU_LIST.reduce((acc, item) => {
+      acc[item.theme] = newCheckedValue
+      return acc
+    }, {} as checkThemeType)
+
     setCheckedTheme(newCheckedTheme)
-    setCheckAll(!checkAll)
+    setCheckAll(newCheckedValue)
   }
 
   const chooseMenu = (menuArrays: string[][]) => {
@@ -42,15 +52,15 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
     const filteredMenu = chosenValue.menu !== '' ? combinedMenu.filter((menu) => menu !== chosenValue.menu) : combinedMenu
 
     if (filteredMenu.length === 0) {
-      const chosenTheme = MAIN_MENU_LIST.find((item) => item.menu.includes(chosenValue.menu))!.theme
-      return { menu: chosenValue.menu, theme: chosenTheme }
+      const chosenItem = MAIN_MENU_LIST.find((item) => item.menu.includes(chosenValue.menu))!
+      return { menu: chosenValue.menu, theme: chosenItem.theme, icon: chosenItem.icon }
     }
 
     const randomIndex = Math.floor(Math.random() * filteredMenu.length)
     const chosenMenu = filteredMenu[randomIndex]
-    const chosenTheme = MAIN_MENU_LIST.find((item) => item.menu.includes(chosenMenu))!.theme
+    const chosenItem = MAIN_MENU_LIST.find((item) => item.menu.includes(chosenMenu))!
 
-    return { menu: chosenMenu, theme: chosenTheme }
+    return { menu: chosenMenu, theme: chosenItem.theme, icon: chosenItem.icon }
   }
 
   const getMenuList = () => {
@@ -76,6 +86,7 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
     <>
       {isOpen && (
         <ResultModal
+          icon={chosenValue.icon}
           menu={chosenValue.menu}
           theme={chosenValue.theme}
           close={() => {
@@ -104,7 +115,7 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
               ))}
             </div>
             <div className={styles.buttonArea}>
-              <CheckBox label="전체선택" onChange={handleCheckAll} />
+              <CheckBox label="전체선택" checked={checkAll} onChange={handleCheckAll} />
               <Button disabled={isDisabled} type="submit" label={isDisabled ? '음식을 선택해줘' : '선택했어'} />
             </div>
           </form>

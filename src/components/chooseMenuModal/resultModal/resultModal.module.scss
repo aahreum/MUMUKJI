@@ -17,13 +17,19 @@
 }
 
 .container {
-  padding-top: 54px;
   width: 100%;
-  @include flex.flexLayout($direction: column);
+
+  .contentsArea {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    @include flex.flexLayout($direction: column, $y: center);
+    transform: translateY(-50%);
+  }
 
   .loadingBubble {
     position: relative;
-    margin-top: 56px;
+    margin-top: 16px;
     width: 200px;
     height: 71px;
     @include flex.flexLayout();
@@ -54,30 +60,45 @@
     max-width: 288px;
     min-width: 200px;
     border-radius: 24px;
-    background-color: $tertiary-500;
+    background-color: $gray-0;
     text-align: center;
+    border: 1px solid $gray-200;
+    z-index: 2;
 
     &::after {
       content: '';
       position: absolute;
       left: calc(50% - 32px);
       bottom: -16px;
-      border: 8px solid $tertiary-500;
+      border: 8px solid $gray-0;
       border-bottom: 8px solid transparent;
       border-left: 8px solid transparent;
+      z-index: 1;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(50% - 32px);
+      bottom: -18px;
+      border: 9px solid $gray-200;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid transparent;
+      z-index: 0;
     }
 
     .theme {
-      @include font.fontStyle($size: $font-size-l, $weight: 800, $color: $tertiary-50);
+      margin-top: 4px;
+      @include font.fontStyle($size: $font-size-l, $weight: 800, $color: $tertiary-500);
     }
 
     .menu {
-      @include font.fontStyle($size: $font-size-4xl, $weight: 800, $color: $gray-0);
+      @include font.fontStyle($size: $font-size-4xl, $weight: 800, $color: $gray-800);
     }
   }
 
   .image {
-    margin-top: 52px;
+    margin-top: 16px;
   }
 
   .buttonArea {

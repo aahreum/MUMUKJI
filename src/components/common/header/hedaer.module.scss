@@ -1,0 +1,16 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
+.container {
+  height: 72px;
+  margin: 0 -16px;
+  padding: 0 16px;
+  @include flex.flexLayout($x: center, $y: flex-start);
+  border-bottom: 1px solid $gray-200;
+
+  .title {
+    flex: 1;
+    @include font.fontStyle($size: $font-size-2xl, $weight: 800);
+    text-align: center;
+  }
+}
