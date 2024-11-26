@@ -1,7 +1,7 @@
 import styles from './modalDimmed.module.scss'
 
-const ModalDimmed = ({ onClick }: { onClick?: () => void }) => {
-  return <div className={styles.container} onClick={onClick} />
+const ModalDimmed = () => {
+  return <div className={styles.container} />
 }
 
 export default ModalDimmed
