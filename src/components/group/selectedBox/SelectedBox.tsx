@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './selectedBox.module.scss'
 import ArrowIcon from '@/assets/icons/groupList/arrow_down.svg?react'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
@@ -6,20 +6,52 @@ import ModalPotal from '@/components/common/modal/ModalPotal'
 import ModalDimmed from '@/components/common/modal/ModalDimmed'
 
 const SelectedBox = () => {
+  const selectBoxListRef = useRef<HTMLDivElement | null>(null)
   const [isOpened, setIsOpened] = useState(false)
   const [selectedItem, setSelectedItem] = useState<null | string>(null)
-  const handleOpen = () => {
-    document.body.style.overflow = 'hidden'
-    setIsOpened(true)
-  }
-  const handleClose = () => {
+
+  const closeModal = useCallback(() => {
     document.body.style.overflow = 'auto'
     setIsOpened(false)
-  }
-  const handleSelectedItem = (item: string) => {
-    setSelectedItem(item)
-    handleClose()
-  }
+  }, [])
+
+  const handleClickOutside = useCallback(
+    (e: MouseEvent) => {
+      if (selectBoxListRef.current && !selectBoxListRef.current.contains(e.target as Node)) {
+        closeModal()
+      }
+    },
+    [closeModal],
+  )
+
+  const handleOpen = useCallback(() => {
+    setIsOpened(true)
+  }, [])
+
+  const handleSelectedItem = useCallback(
+    (item: string) => {
+      setSelectedItem(item)
+      closeModal()
+    },
+    [closeModal],
+  )
+
+  useEffect(() => {
+    if (isOpened) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpened, handleClickOutside])
+
+  useEffect(() => {
+    document.body.style.overflow = isOpened ? 'hidden' : 'auto'
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isOpened])
+
   return (
     <>
       <button type="button" className={styles.selectedBox} onClick={handleOpen}>
@@ -27,8 +59,8 @@ const SelectedBox = () => {
       </button>
       {isOpened && (
         <ModalPotal>
-          <ModalDimmed onClick={handleClose} />
-          <div className={styles.menuList}>
+          <ModalDimmed />
+          <div className={styles.menuList} ref={selectBoxListRef}>
             {MAIN_MENU_LIST.map((item) => (
               <button className={`${styles.menu} ${selectedItem === item.theme && styles.selectedMenu}`} key={item.id} type="button" onClick={() => handleSelectedItem(item.theme)}>
                 {item.theme}
