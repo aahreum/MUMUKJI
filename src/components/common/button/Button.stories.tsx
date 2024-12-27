@@ -15,7 +15,7 @@ const meta = {
       },
     },
   },
-  decorators: (story) => <div style={{ width: '600px' }}>{story()}</div>,
+  decorators: (Story) => <div style={{ width: '600px' }}>{<Story />}</div>,
   tags: ['autodocs'],
 } satisfies Meta<typeof Button>
 
