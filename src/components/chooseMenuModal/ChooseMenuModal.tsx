@@ -116,7 +116,7 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
             </div>
             <div className={styles.buttonArea}>
               <CheckBox label="전체선택" checked={checkAll} onChange={handleCheckAll} />
-              <Button disabled={isDisabled} type="submit" label={isDisabled ? '음식을 선택해줘' : '선택했어'} />
+              <Button disabled={isDisabled} full={true} type="submit" label={isDisabled ? '음식을 선택해줘' : '선택했어'} />
             </div>
           </form>
         </div>

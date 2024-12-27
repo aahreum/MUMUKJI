@@ -30,8 +30,8 @@ const GroupAddForm = () => {
           <p className={styles.textCount}>{menu.length}/20</p>
         </div>
         <div className={styles.buttonArea}>
-          <Button label="취소" size="s" color="basic" />
-          <Button label="완료" size="s" color="secondary" disabled />
+          <Button label="취소" styleType="outline" roundType="square" size="xs" color="tertiary" />
+          <Button label="완료" roundType="square" size="xs" color="secondary" disabled />
         </div>
       </div>
       <button onClick={openModal}>모달확인</button>

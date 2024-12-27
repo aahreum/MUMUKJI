@@ -59,13 +59,15 @@ const ResultModal = ({ menu, theme, close, icon, onRetry }: ResultModalProps) =>
           <Button
             disabled={loading}
             label="다시 뽑아줘"
-            color="basic"
+            full={true}
+            styleType="outline"
+            color="tertiary"
             onClick={() => {
               setLoading(true)
               onRetry()
             }}
           />
-          <Button disabled={loading} label="이거 먹을래!" onClick={handleSelect} />
+          <Button disabled={loading} label="이거 먹을래!" full={true} onClick={handleSelect} />
         </div>
       </div>
     </FullModalCotainer>

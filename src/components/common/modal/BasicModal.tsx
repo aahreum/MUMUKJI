@@ -16,11 +16,25 @@ const BasicModal = (props: BasicModalProps) => {
         </div>
         <div className={styles.buttonArea}>
           {modalType === 'alert' ? (
-            <Button color="basic" size="s" label={firstBtnLabel} onClick={firstBtnOnClick} />
+            <Button styleType="outline" roundType="square" color="tertiary" size="s" label={firstBtnLabel} onClick={firstBtnOnClick} />
           ) : (
             <>
-              <Button color={modalType === 'confirmN' ? 'negative' : 'basic'} size="s" label={firstBtnLabel} onClick={firstBtnOnClick} />
-              <Button color={modalType === 'confirmN' ? 'basic' : 'secondary'} size="s" label={props.secondBtnLabel} onClick={props.secondBtnOnClick} />
+              <Button
+                color={modalType === 'confirmN' ? 'negative' : 'tertiary'}
+                styleType={modalType === 'confirmN' ? 'solid' : 'outline'}
+                roundType="square"
+                size="s"
+                label={firstBtnLabel}
+                onClick={firstBtnOnClick}
+              />
+              <Button
+                styleType={modalType === 'confirmN' ? 'outline' : 'solid'}
+                color={modalType === 'confirmN' ? 'tertiary' : 'secondary'}
+                roundType="square"
+                size="s"
+                label={props.secondBtnLabel}
+                onClick={props.secondBtnOnClick}
+              />
             </>
           )}
         </div>
