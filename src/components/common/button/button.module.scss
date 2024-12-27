@@ -1,5 +1,9 @@
 @use '@/styles/base/_commonStyleRules' as *;
 
+button:disabled {
+  @extend %buttonDisabled;
+}
+
 .size {
   @extend %buttonSizeL;
   &--full {
@@ -37,9 +41,6 @@
   &--negative {
     @extend %buttonNegativeSolid;
   }
-  &:disabled {
-    @extend %buttonDisabledSolid;
-  }
 }
 
 .outline {
@@ -52,8 +53,5 @@
   }
   &--negative {
     @extend %buttonNegativeOutline;
-  }
-  &:disabled {
-    @extend %buttonDisabledOutline;
   }
 }

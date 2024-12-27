@@ -42,10 +42,6 @@
   @include b.buttonColor($negative-500, $gray-0);
 }
 
-%buttonDisabledSolid {
-  @include b.buttonColor($gray-50, $gray-300);
-}
-
 // outline
 %buttonPrimaryOutline {
   @include b.buttonColor($gray-0, $primary-600);
@@ -67,11 +63,6 @@
   border: 1px solid $negative-200;
 }
 
-%buttonDisabledOutline {
-  @include b.buttonColor(transparent, $gray-300);
-  border: 1px solid $gray-100;
-}
-
 // radius
 %buttonRoundSquare {
   border-radius: $button-radius-roundSquare;
@@ -83,4 +74,9 @@
 
 %buttonCapsule {
   border-radius: $button-radius-capsule;
+}
+
+%buttonDisabled {
+  border: none;
+  @include b.buttonColor($gray-50, $gray-300);
 }
