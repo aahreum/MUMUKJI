@@ -1,42 +1,59 @@
 @use '@/styles/base/_commonStyleRules' as *;
 
-.button {
-  @extend %buttonPrimary;
-
-  &:disabled {
-    border: none;
-    background-color: $gray-100;
-    color: $gray-400;
+.size {
+  @extend %buttonSizeL;
+  &--full {
+    @extend %buttonSizeFull;
+  }
+  &--m {
+    @extend %buttonSizeM;
+  }
+  &--s {
+    @extend %buttonSizeS;
+  }
+  &--xs {
+    @extend %buttonSizeXS;
   }
 }
 
-.secondary {
-  @extend %buttonSecondary;
+.round {
+  @extend %buttonRoundSquare;
+  &--square {
+    @extend %buttonSquare;
+  }
+  &--capsule {
+    @extend %buttonCapsule;
+  }
 }
 
-.negative {
-  @extend %buttonNegative;
+.solid {
+  @extend %buttonPrimarySolid;
+  &--secondary {
+    @extend %buttonSecondarySolid;
+  }
+  &--tertiary {
+    @extend %buttonTertiarySolid;
+  }
+  &--negative {
+    @extend %buttonNegativeSolid;
+  }
+  &:disabled {
+    @extend %buttonDisabledSolid;
+  }
 }
 
-.basic {
-  @extend %buttonBasic;
-}
-
-.light {
-  font-weight: 500;
-}
-
-.sizeM {
-  height: 52px;
-  border-radius: 16px;
-}
-
-.sizeS {
-  width: auto;
-  height: 34px;
-  padding: 0 16px;
-  height: 36px;
-  border-radius: 8px;
-  font-size: $font-size-m;
-  font-weight: 500;
+.outline {
+  @extend %buttonPrimaryOutline;
+  &--secondary {
+    @extend %buttonSecondaryOutline;
+  }
+  &--tertiary {
+    @extend %buttonTertiaryOutline;
+  }
+  &--negative {
+    @extend %buttonNegativeOutline;
+  }
+  &:disabled {
+    @extend %buttonDisabledOutline;
+  }
 }

@@ -5,80 +5,214 @@ import Button from './Button'
 const meta = {
   title: 'Components/common/Button',
   component: Button,
+  tags: ['autodocs'],
   parameters: {
-    componentSubtitle: '공통으로 사용하는 버튼 컴포넌트입니다.',
+    componentSubtitle: '머먹지에서 공통적으로 사용하는 버튼 컴포넌트입니다.',
     docs: {
       description: {
-        component: `<li>label: 버튼 텍스트를 입력합니다.</li><li>size: 버튼 크기 값으로 <span className='css-o1d7ko css-in3yi3'>'s' | 'm' | 'l'</span> 중 하나를 선택할 수 있습니다.</li><li>color: 버튼 컬러 값으로 <span className='css-o1d7ko css-in3yi3'>'primary' | 'secondary' | 'negative' | 'basic'</span> 중 하나를 선택할 수 있습니다.</li><li>light: 버튼 텍스트 스타일 값으로 <span className='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li><li>type: 버튼 타입 기본 값은 <span className='css-o1d7ko css-in3yi3'>button</span>입니다.</li>
-        
-        `,
+        component: ``,
       },
     },
   },
-  decorators: (Story) => <div style={{ width: '600px' }}>{<Story />}</div>,
-  tags: ['autodocs'],
+  argTypes: {
+    label: {
+      description: '버튼 라벨',
+      table: {
+        category: 'required',
+      },
+    },
+    styleType: {
+      description: '버튼 스타일',
+      table: {
+        category: 'optional',
+      },
+    },
+    roundType: {
+      description: '버튼 라운드 스타일',
+      table: {
+        category: 'optional',
+      },
+    },
+    size: {
+      description: '버튼 크기',
+      table: {
+        category: 'optional',
+      },
+    },
+    color: {
+      description: '버튼 컬러',
+      table: {
+        category: 'optional',
+      },
+    },
+    full: {
+      description: '풀 사이즈 버튼 여부',
+      table: {
+        category: 'optional',
+      },
+    },
+    type: {
+      description: '버튼 타입',
+      table: {
+        category: 'button - attributes',
+      },
+    },
+    disabled: {
+      description: '버튼 활성화 여부',
+      table: {
+        category: 'button - attributes',
+      },
+    },
+    onClick: {
+      description: '버튼 함수',
+      table: {
+        category: 'button - attributes',
+      },
+    },
+  },
+  decorators: (Story) => <div style={{ width: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{<Story />}</div>,
 } satisfies Meta<typeof Button>
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof Button>
 
-export const Primary: Story = {
+export const SolidPrimary: Story = {
   args: {
     label: '버튼',
-    size: 'l',
+    styleType: 'solid',
+    roundType: 'loundSquare',
     color: 'primary',
-    light: false,
+    size: 'l',
+    full: false,
     type: 'button',
     disabled: false,
     onClick: action('Button clicked'),
   },
 }
 
-export const Secondary: Story = {
+export const SolidSecondary: Story = {
   args: {
     label: '버튼',
-    size: 'l',
+    styleType: 'solid',
+    roundType: 'loundSquare',
     color: 'secondary',
-    light: false,
+    size: 'l',
+    full: false,
     type: 'button',
     disabled: false,
     onClick: action('Button clicked'),
   },
 }
 
-export const Negative: Story = {
+export const SolidTertiary: Story = {
   args: {
     label: '버튼',
+    styleType: 'solid',
+    roundType: 'loundSquare',
+    color: 'tertiary',
     size: 'l',
+    full: false,
+    type: 'button',
+    disabled: false,
+    onClick: action('Button clicked'),
+  },
+}
+
+export const SolidNegative: Story = {
+  args: {
+    label: '버튼',
+    styleType: 'solid',
+    roundType: 'loundSquare',
     color: 'negative',
-    light: false,
+    size: 'l',
+    full: false,
     type: 'button',
     disabled: false,
     onClick: action('Button clicked'),
   },
 }
 
-export const Basic: Story = {
+export const SolidDisabled: Story = {
   args: {
     label: '버튼',
+    styleType: 'solid',
+    roundType: 'loundSquare',
+    color: 'primary',
     size: 'l',
-    color: 'basic',
-    light: false,
+    full: false,
+    type: 'button',
+    disabled: true,
+    onClick: action('Button clicked'),
+  },
+}
+
+export const OutlinePrimary: Story = {
+  args: {
+    label: '버튼',
+    styleType: 'outline',
+    roundType: 'loundSquare',
+    color: 'primary',
+    size: 'l',
+    full: false,
     type: 'button',
     disabled: false,
     onClick: action('Button clicked'),
   },
 }
 
-export const Light: Story = {
+export const OutlineSecondary: Story = {
   args: {
     label: '버튼',
+    styleType: 'outline',
+    roundType: 'loundSquare',
+    color: 'secondary',
     size: 'l',
-    color: 'basic',
-    light: true,
+    full: false,
     type: 'button',
     disabled: false,
+    onClick: action('Button clicked'),
+  },
+}
+
+export const OutlineTertiary: Story = {
+  args: {
+    label: '버튼',
+    styleType: 'outline',
+    roundType: 'loundSquare',
+    color: 'tertiary',
+    size: 'l',
+    full: false,
+    type: 'button',
+    disabled: false,
+    onClick: action('Button clicked'),
+  },
+}
+
+export const OutlineNegative: Story = {
+  args: {
+    label: '버튼',
+    styleType: 'outline',
+    roundType: 'loundSquare',
+    color: 'negative',
+    size: 'l',
+    full: false,
+    type: 'button',
+    disabled: false,
+    onClick: action('Button clicked'),
+  },
+}
+
+export const OutlineDisabled: Story = {
+  args: {
+    label: '버튼',
+    styleType: 'outline',
+    roundType: 'loundSquare',
+    color: 'primary',
+    size: 'l',
+    full: false,
+    type: 'button',
+    disabled: true,
     onClick: action('Button clicked'),
   },
 }
