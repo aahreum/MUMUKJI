@@ -2,7 +2,7 @@
 @use '@/styles/mixins/_font' as font;
 
 .container {
-  padding: 12px;
+  padding: 24px;
   width: 320px;
   background-color: $gray-0;
   border-radius: 16px;
@@ -15,20 +15,18 @@
   box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.1);
 
   .textArea {
-    margin-top: 28px;
-    margin-bottom: 40px;
-    text-align: center;
+    margin-bottom: 24px;
     .title {
       margin-bottom: 16px;
       @include font.fontStyle($size: $font-size-2xl, $weight: 800);
     }
     .desc {
-      color: $gray-500;
+      @include font.fontStyle($line-height: $line-height-m, $color: $gray-500);
     }
   }
 
   .buttonArea {
-    @include flex.flexLayout();
+    @include flex.flexLayout($y: flex-end);
     gap: 8px;
   }
 }
