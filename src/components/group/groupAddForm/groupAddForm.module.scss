@@ -14,17 +14,6 @@
       width: 100%;
     }
   }
-  .selectedBoxArea {
-    .selectedBox {
-      width: 140px;
-      height: 32px;
-      border-radius: 8px;
-      background-color: $tertiary-50;
-      @include flex.flexLayout();
-      gap: 4px;
-      @include font.fontStyle($color: $tertiary-700, $weight: 500);
-    }
-  }
   .inputArea {
     width: 100%;
     position: relative;
