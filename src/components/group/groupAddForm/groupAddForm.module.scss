@@ -39,6 +39,14 @@
       text-align: right;
       @include font.fontStyle($color: $gray-400, $size: $font-size-s);
     }
+    .inputDelBtn {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 48px;
+    }
   }
   .buttonArea {
     margin-left: auto;
