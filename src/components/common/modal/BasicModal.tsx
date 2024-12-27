@@ -1,6 +1,6 @@
 import styles from './basicModal.module.scss'
 import Button from '@/components/common/button/Button'
-import ModalBG from './ModalDimmed'
+import ModalDimmed from './ModalDimmed'
 import ModalPotal from './ModalPotal'
 import { buttonColorTypes } from '@/types/buttonColorTypes'
 
@@ -18,7 +18,7 @@ interface BasicModalProps {
 const BasicModal = ({ title, desc, firstBtnColor, firstBtnLabel, firstBtnOnClick, secondBtnColor, secondBtnLabel, secondBtnOnClick }: BasicModalProps) => {
   return (
     <ModalPotal>
-      <ModalBG />
+      <ModalDimmed />
       <div className={styles.container}>
         <div className={styles.textArea}>
           <p className={styles.title}>{title}</p>
