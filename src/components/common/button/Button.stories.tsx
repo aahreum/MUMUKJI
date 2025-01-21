@@ -10,14 +10,11 @@ const meta = {
     componentSubtitle: '머먹지에서 공통적으로 사용하는 버튼 컴포넌트입니다.',
     docs: {
       description: {
-        component: `
-- label: 
-- 아아
-
-`,
+        component: '<li><code>label</code><code>onClick</code>은 필수로 입력해야 합니다.</li>',
       },
     },
   },
+
   argTypes: {
     label: {
       description: '버튼 라벨',
@@ -93,6 +90,12 @@ export const SolidPrimary: Story = {
     disabled: false,
     onClick: action('Button clicked'),
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
+  },
 }
 
 export const SolidSecondary: Story = {
@@ -106,6 +109,12 @@ export const SolidSecondary: Story = {
     type: 'button',
     disabled: false,
     onClick: action('Button clicked'),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
   },
 }
 
@@ -121,6 +130,12 @@ export const SolidTertiary: Story = {
     disabled: false,
     onClick: action('Button clicked'),
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
+  },
 }
 
 export const SolidNegative: Story = {
@@ -134,6 +149,12 @@ export const SolidNegative: Story = {
     type: 'button',
     disabled: false,
     onClick: action('Button clicked'),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
   },
 }
 
@@ -149,6 +170,12 @@ export const OutlinePrimary: Story = {
     disabled: false,
     onClick: action('Button clicked'),
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
+  },
 }
 
 export const OutlineSecondary: Story = {
@@ -162,6 +189,12 @@ export const OutlineSecondary: Story = {
     type: 'button',
     disabled: false,
     onClick: action('Button clicked'),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
   },
 }
 
@@ -177,6 +210,12 @@ export const OutlineTertiary: Story = {
     disabled: false,
     onClick: action('Button clicked'),
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
+  },
 }
 
 export const OutlineNegative: Story = {
@@ -191,6 +230,12 @@ export const OutlineNegative: Story = {
     disabled: false,
     onClick: action('Button clicked'),
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
+  },
 }
 
 export const Disabled: Story = {
@@ -204,5 +249,11 @@ export const Disabled: Story = {
     type: 'button',
     disabled: true,
     onClick: action('Button clicked'),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
+    },
   },
 }
