@@ -1,7 +1,7 @@
 import Header from '@/components/common/header/Header'
-import GroupAddForm from '@/components/group/groupAddForm/GroupAddForm'
+import GroupAddForm from '@/components/group/groupAdd/groupAddForm/GroupAddForm'
 import GroupList from '@/components/group/groupList/GroupList'
-import GroupListEmpty from '@/components/group/groupListEmpty/GroupListEmpty'
+import GroupListEmpty from '@/components/group/groupList/groupListEmpty/GroupListEmpty'
 import { groupDataTypes } from '@/types/groupDataTypes'
 
 const Group = () => {
