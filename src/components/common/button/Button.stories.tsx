@@ -10,7 +10,11 @@ const meta = {
     componentSubtitle: '머먹지에서 공통적으로 사용하는 버튼 컴포넌트입니다.',
     docs: {
       description: {
-        component: ``,
+        component: `
+- label: 
+- 아아
+
+`,
       },
     },
   },
@@ -133,20 +137,6 @@ export const SolidNegative: Story = {
   },
 }
 
-export const SolidDisabled: Story = {
-  args: {
-    label: '버튼',
-    styleType: 'solid',
-    roundType: 'loundSquare',
-    color: 'primary',
-    size: 'l',
-    full: false,
-    type: 'button',
-    disabled: true,
-    onClick: action('Button clicked'),
-  },
-}
-
 export const OutlinePrimary: Story = {
   args: {
     label: '버튼',
@@ -203,7 +193,7 @@ export const OutlineNegative: Story = {
   },
 }
 
-export const OutlineDisabled: Story = {
+export const Disabled: Story = {
   args: {
     label: '버튼',
     styleType: 'outline',
