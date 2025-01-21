@@ -8,7 +8,7 @@ const meta = {
   component: BasicModal,
   tags: ['autodocs'],
   parameters: {
-    componentSubtitle: '공통으로 사용하는 모달 컴포넌트입니다.',
+    componentSubtitle: '머먹지에서 공통으로 사용하는 모달 컴포넌트입니다.',
     docs: {
       description: {
         component:
@@ -94,7 +94,7 @@ export const ConfirmPositive: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/KVyRukGQ4m9qjSFMl6USRE/%ED%81%AC%ED%8C%8C-%EB%82%98%EC%9D%B8%ED%95%98%EC%9D%B4%EC%96%B4-%EC%B1%84%EC%9A%A9%EC%9D%B4%EB%AF%B8%EC%A7%80?node-id=89-15&t=v24VQbtcvYFoYrV8-1',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1298-1365&t=pD666ta77og4q7AJ-1',
     },
     docs: {
       description: {
@@ -117,7 +117,7 @@ export const ConfirmNegative: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/KVyRukGQ4m9qjSFMl6USRE/%ED%81%AC%ED%8C%8C-%EB%82%98%EC%9D%B8%ED%95%98%EC%9D%B4%EC%96%B4-%EC%B1%84%EC%9A%A9%EC%9D%B4%EB%AF%B8%EC%A7%80?node-id=89-15&t=v24VQbtcvYFoYrV8-1',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1298-1365&t=pD666ta77og4q7AJ-1',
     },
     docs: {
       description: {
@@ -138,7 +138,7 @@ export const Alert: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/KVyRukGQ4m9qjSFMl6USRE/%ED%81%AC%ED%8C%8C-%EB%82%98%EC%9D%B8%ED%95%98%EC%9D%B4%EC%96%B4-%EC%B1%84%EC%9A%A9%EC%9D%B4%EB%AF%B8%EC%A7%80?node-id=89-15&t=v24VQbtcvYFoYrV8-1',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1298-1365&t=pD666ta77og4q7AJ-1',
     },
     docs: {
       description: {
