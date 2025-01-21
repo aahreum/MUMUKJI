@@ -1,9 +1,7 @@
 import styles from './title.module.scss'
 
 interface TitleProps {
-  /** 텍스트 입력 */
   children: React.ReactNode
-  /** 텍스트 정렬 */
   textAlignCenter?: boolean
 }
 
