@@ -1,6 +1,6 @@
-import { atom } from 'recoil'
+import { atomFamily } from 'recoil'
 
-export const textfieldData = atom({
+export const textfieldData = atomFamily({
   key: 'textfieldData',
   default: '',
 })
