@@ -1,6 +1,6 @@
 import { groupDataTypes } from '@/types/groupDataTypes'
 import styles from './groupList.module.scss'
-import GroupListCard from '@/components/group/groupListCard/GroupListCard'
+import GroupListCard from '@/components/group/groupList/groupListCard/GroupListCard'
 
 const GroupList = ({ data }: { data: groupDataTypes[] }) => {
   return (
