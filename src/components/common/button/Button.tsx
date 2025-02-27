@@ -2,6 +2,7 @@ import styles from './button.module.scss'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string
+  icon?: React.ReactNode
   styleType?: 'solid' | 'outline'
   roundType?: 'loundSquare' | 'square' | 'capsule'
   size?: 'xs' | 's' | 'm' | 'l'
@@ -11,6 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({
   label,
+  icon,
   styleType = 'solid',
   roundType = 'loundSquare',
   size = 'l',
@@ -22,7 +24,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`${styleType === 'solid' ? styles.solid : styles.outline}  
+      className={`${styles.container} ${styleType === 'solid' ? styles.solid : styles.outline}  
       ${roundType === 'loundSquare' ? styles.round : roundType === 'square' ? styles['round--square'] : styles['round--capsule']} 
       ${size === 'l' ? styles.size : size === 'm' ? styles['size--m'] : size === 's' ? styles['size--s'] : styles['size--xs']} 
       ${
@@ -47,6 +49,7 @@ const Button = ({
       disabled={disabled}
       onClick={onClick}
     >
+      {icon}
       {label}
     </button>
   )
