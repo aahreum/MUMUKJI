@@ -1,0 +1,26 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
+.container {
+  position: fixed;
+  bottom: 92px;
+  right: calc((100vw - 480px) / 2 + 16px);
+  padding: 0 24px;
+  width: fit-content;
+  height: $button-height-m;
+  @include font.fontStyle($font-size-l, $weight: 700);
+  @include flex.flexLayout();
+  gap: 8px;
+  border-radius: $button-radius-capsule;
+  box-shadow: 0px 0px 6px 0px rgba(#000, 0.1);
+  box-shadow: 0px 12px 26px 0px rgba(#000, 0.1);
+}
+
+.primary {
+  color: $gray-0;
+  background-color: $primary-500;
+}
+
+.tertiary {
+  background-color: $gray-0;
+}
