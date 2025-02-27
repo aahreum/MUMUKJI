@@ -6,6 +6,7 @@ import GroupRouletteList from '@/components/mainPage/groupRouletteList/GroupRoul
 import ChooseMenuModal from '@/components/chooseMenuModal/ChooseMenuModal'
 import { useRecoilValue } from 'recoil'
 import { modalCountState } from '@/recoil/modalCount'
+import GroupAddButton from '@/components/mainPage/groupAddButton/GroupAddButton'
 
 const Index = (): React.ReactElement => {
   const { isOpen, openModal, closeModal } = useModal()
@@ -21,6 +22,7 @@ const Index = (): React.ReactElement => {
           <GroupRouletteList />
         </div>
       </main>
+      <GroupAddButton />
     </>
   )
 }
