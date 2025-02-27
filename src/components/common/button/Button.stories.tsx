@@ -46,6 +46,14 @@ const meta = {
         category: 'optional',
       },
     },
+    icon: {
+      control: 'text',
+      description: '아이콘',
+      table: {
+        category: 'optional',
+        type: { summary: 'ReactNode' },
+      },
+    },
     full: {
       description: '풀 사이즈 버튼 여부',
       table: {
