@@ -1,10 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Index from '@/pages/Index'
-import Group from '@/pages/group'
 import Layout from '@/pages/Layout'
 // import List from '@/pages/List'
 import NotFound from '@/pages/NotFound'
 import InProgress from '@/pages/InProgress'
+import Group from '@/pages/Group'
+import GroupAdd from '@/pages/GroupAdd'
+import GroupEdit from '@/pages/GroupEdit'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,16 @@ const router = createBrowserRouter([
         element: <Group />,
       },
     ],
+  },
+  {
+    id: 'groupAdd',
+    path: '/group/add',
+    element: <GroupAdd />,
+  },
+  {
+    id: 'groupEdit',
+    path: '/group/:id',
+    element: <GroupEdit />,
   },
   {
     id: 'notFound',
