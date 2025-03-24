@@ -66,6 +66,12 @@ const meta = {
         category: 'optional',
       },
     },
+    className: {
+      description: '스타일 추가',
+      table: {
+        category: 'Link - Attributes',
+      },
+    },
   },
   decorators: (Story) => (
     <BrowserRouter>
