@@ -1,4 +1,4 @@
-import styles from './button.module.scss'
+import styles from '@/styles/components/button.module.scss'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string
