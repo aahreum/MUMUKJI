@@ -21,6 +21,7 @@ const Button = ({
   type = 'button',
   disabled = false,
   onClick,
+  className,
 }: ButtonProps) => {
   return (
     <button
@@ -44,7 +45,7 @@ const Button = ({
                 ? styles['outline--negative']
                 : styles['outline--primary']
       }
-      ${full === true ? styles['size--full'] : ''}`}
+      ${full === true ? styles['size--full'] : ''} ${className}`}
       type={type}
       disabled={disabled}
       onClick={onClick}
