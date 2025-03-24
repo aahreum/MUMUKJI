@@ -78,6 +78,12 @@ const meta = {
         category: 'button - attributes',
       },
     },
+    className: {
+      description: '스타일 추가',
+      table: {
+        category: 'button - attributes',
+      },
+    },
   },
   decorators: (Story) => <div style={{ width: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{<Story />}</div>,
 } satisfies Meta<typeof Button>
