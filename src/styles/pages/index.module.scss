@@ -1,20 +1,28 @@
 .container {
   padding-top: 72px;
-}
 
-.image {
-  margin: 16px auto;
-  display: block;
-  height: 320px;
-  object-fit: cover;
+  .image {
+    margin: 16px auto;
+    display: block;
+    height: 320px;
+    object-fit: cover;
 
-  @media screen and (max-width: $min-width) {
-    height: 200px;
+    @media screen and (max-width: $min-width) {
+      height: 200px;
+    }
+  }
+
+  .buttonArea {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
-.buttonArea {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.groupAddButton {
+  position: fixed;
+  bottom: 92px;
+  right: calc((100vw - 480px) / 2 + 16px);
+  box-shadow: 0px 0px 6px 0px rgba(#000, 0.1);
+  box-shadow: 0px 12px 26px 0px rgba(#000, 0.1);
 }
