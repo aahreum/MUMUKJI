@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from '@/styles/components/button.module.scss'
 
-interface LinkButtonProps {
+interface LinkButtonProps extends React.LinkHTMLAttributes<HTMLLinkElement> {
   link: string
   label: string
   icon?: React.ReactNode
@@ -12,7 +12,7 @@ interface LinkButtonProps {
   full?: boolean
 }
 
-const LinkButton = ({ link, label, icon, styleType = 'solid', roundType = 'loundSquare', size = 'l', color = 'primary', full = true }: LinkButtonProps) => {
+const LinkButton = ({ link, label, icon, styleType = 'solid', roundType = 'loundSquare', size = 'l', color = 'primary', full = true, className }: LinkButtonProps) => {
   return (
     <Link
       to={link}
@@ -36,7 +36,7 @@ const LinkButton = ({ link, label, icon, styleType = 'solid', roundType = 'lound
                 ? styles['outline--negative']
                 : styles['outline--primary']
       }
-      ${full === true ? styles['size--full'] : ''}`}
+      ${full === true ? styles['size--full'] : ''} ${className}`}
     >
       {icon}
       {label}
