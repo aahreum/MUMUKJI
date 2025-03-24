@@ -2,16 +2,16 @@ import styles from '@/styles/pages/index.module.scss'
 import useModal from '@/hooks/useModal'
 import { useRecoilValue } from 'recoil'
 import { modalCountState } from '@/recoil/modalCount'
-import AddIcon from '@/assets/icons/add.svg?react'
 import TopLogo from '@/components/common/topLogo/TopLogo'
 import RouletteGroupButton from '@/components/mainPage/rouletteGroupButton/RouletteGroupButton'
 import GroupRouletteList from '@/components/mainPage/groupRouletteList/GroupRouletteList'
 import ChooseMenuModal from '@/components/chooseMenuModal/ChooseMenuModal'
-import LinkButton from '@/components/common/linkButton/LinkButton'
+import GroupAddButton from '@/components/group/groupAdd/groupAddButton/GroupAddButton'
 
 const Index = (): React.ReactElement => {
   const { isOpen, openModal, closeModal } = useModal()
   const modalCount = useRecoilValue(modalCountState)
+
   return (
     <>
       {isOpen && modalCount !== 0 && <ChooseMenuModal close={closeModal} />}
@@ -23,7 +23,7 @@ const Index = (): React.ReactElement => {
           <GroupRouletteList />
         </div>
       </main>
-      <LinkButton className={styles.groupAddButton} label={'그룹추가'} link={'/group/add'} size="m" icon={<AddIcon />} roundType="capsule" full={false} />
+      <GroupAddButton />
     </>
   )
 }
