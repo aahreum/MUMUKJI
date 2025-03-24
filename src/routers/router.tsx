@@ -5,7 +5,6 @@ import NotFound from '@/pages/NotFound'
 import InProgress from '@/pages/InProgress'
 import Group from '@/pages/Group'
 import GroupAdd from '@/pages/GroupAdd'
-import GroupEdit from '@/pages/GroupEdit'
 
 const router = createBrowserRouter([
   {
@@ -31,13 +30,8 @@ const router = createBrowserRouter([
   },
   {
     id: 'groupAdd',
-    path: '/group/add',
-    element: <GroupAdd />,
-  },
-  {
-    id: 'groupEdit',
     path: '/group/:id',
-    element: <GroupEdit />,
+    element: <GroupAdd />,
   },
   {
     id: 'notFound',
