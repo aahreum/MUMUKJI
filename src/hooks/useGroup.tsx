@@ -1,16 +1,23 @@
-import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { newItemDataTypes } from '@/types/groupDataTypes'
+import { useEffect, useState } from 'react'
 
 const useGroup = () => {
   const navigate = useNavigate()
-  const [groupId, setGroupId] = useState(0)
+  const { id } = useParams()
+  const urlGroupId = Number(id)
+  const [groupId, setGroupId] = useState<number>(urlGroupId || 0)
 
   useEffect(() => {
-    const storedData = localStorage.getItem('menuList')
-    const storedGroups = storedData ? JSON.parse(storedData) : {}
-    const maxGroupId = Object.keys(storedGroups).length > 0 ? Math.max(...Object.keys(storedGroups).map(Number)) : 0
-    setGroupId(maxGroupId)
-  }, [])
+    if (!urlGroupId) {
+      const storedData = localStorage.getItem('menuList')
+      const storedGroups = storedData ? JSON.parse(storedData) : {}
+      const groupIds = Object.keys(storedGroups).map(Number)
+
+      const maxGroupId = groupIds.length > 0 ? Math.max(...groupIds) : 0
+      setGroupId(maxGroupId)
+    }
+  }, [urlGroupId])
 
   const addGroup = () => {
     const newGroupId = groupId + 1
@@ -18,15 +25,16 @@ const useGroup = () => {
     navigate(`/group/${newGroupId}`)
   }
 
-  const saveMenu = (groupId: number, newItem: { id: number; theme: string; menu: string }) => {
+  const saveMenu = ({ id, theme, menu }: newItemDataTypes) => {
     const storedData = localStorage.getItem('menuList')
     const storedGroups = storedData ? JSON.parse(storedData) : {}
 
-    if (!storedGroups[groupId]) {
-      storedGroups[groupId] = { menu: [] }
+    if (!storedGroups[urlGroupId]) {
+      storedGroups[urlGroupId] = { menu: [], favorite: false }
     }
 
-    storedGroups[groupId].menu.push(newItem)
+    storedGroups[urlGroupId].menu.push({ id, theme, menu })
+
     localStorage.setItem('menuList', JSON.stringify(storedGroups))
   }
 
