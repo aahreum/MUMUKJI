@@ -15,7 +15,7 @@ const TabBar = () => {
     {
       icon: RiceIcon,
       menu: '머먹었더라?',
-      url: '/list',
+      url: '/history',
     },
     {
       icon: HomeIcon,
