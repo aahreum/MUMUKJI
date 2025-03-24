@@ -91,7 +91,7 @@ export const SolidPrimary: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1780-6938&t=pD666ta77og4q7AJ-1',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
     },
   },
 }
@@ -109,7 +109,7 @@ export const SolidSecondary: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1780-6938&t=pD666ta77og4q7AJ-1',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1183-863&t=ORHh7KkT6wejj3uq-1',
     },
   },
 }
