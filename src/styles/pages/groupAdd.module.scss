@@ -26,17 +26,3 @@
     color: $secondary-500;
   }
 }
-
-.formTopContainer {
-  padding: 16px 0;
-  @include flex.flexLayout($y: space-between);
-
-  .menuListCountArea {
-    @include flex.flexLayout();
-    gap: 8px;
-    @include font.fontStyle($size: $font-size-l, $weight: 500, $color: $gray-900);
-    .menuListCountAcc {
-      color: $secondary-500;
-    }
-  }
-}
