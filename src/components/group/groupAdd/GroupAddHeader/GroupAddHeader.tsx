@@ -8,7 +8,7 @@ import GroupNameModal from '@/components/group/groupAdd/groupNameModal/GroupName
 const GroupAddHeader = () => {
   const navigate = useNavigate()
   const { isOpen, openModal, closeModal } = useModal()
-  const { groupName, updateGroupName, saveDataToLocalStorage } = useGroup()
+  const { groupName, updateGroupName, saveDataToLocalStorage, menuList } = useGroup()
 
   const handleBackButton = () => {
     if (window.history.length <= 2) {
@@ -28,7 +28,7 @@ const GroupAddHeader = () => {
           {groupName}
           <EditIcon />
         </button>
-        <button className={`${styles.controlButton} ${styles.saveButton}`} disabled onClick={saveDataToLocalStorage}>
+        <button className={`${styles.controlButton} ${styles.saveButton}`} disabled={menuList.length === 0} onClick={saveDataToLocalStorage}>
           저장
         </button>
       </div>
