@@ -1,17 +1,23 @@
 import styles from './groupListCard.module.scss'
-import { groupListCardProps } from '@/types/groupDataTypes'
+import { newItemDataTypes } from '@/types/groupDataTypes'
 import FavoritesIcon from '@/assets/icons/groupList/favorites.svg?react'
 import FavoritesFillIcon from '@/assets/icons/groupList/favorites_fill.svg?react'
 import EditIcon from '@/assets/icons/groupList/edit.svg?react'
 import TrashIcon from '@/assets/icons/groupList/trash.svg?react'
 
-const GroupListCard = ({ title, menu, favorites }: groupListCardProps) => {
+interface groupListCardProps {
+  groupName: string
+  menu: newItemDataTypes
+  favorite: boolean
+}
+
+const GroupListCard = ({ groupName, menu, favorite }: groupListCardProps) => {
   return (
     <div className={styles.container}>
-      <button type="button">{favorites === true ? <FavoritesFillIcon /> : <FavoritesIcon />}</button>
+      <button type="button">{favorite === true ? <FavoritesFillIcon /> : <FavoritesIcon />}</button>
       <div className={styles.textArea}>
-        <p className={styles.title}>{title}</p>
-        <p className={styles.desc}>{menu}</p>
+        <p className={styles.title}>{groupName}</p>
+        <p className={styles.desc}>{menu.menu}</p>
       </div>
       <button type="button">
         <EditIcon />

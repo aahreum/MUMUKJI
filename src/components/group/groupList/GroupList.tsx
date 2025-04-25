@@ -1,12 +1,12 @@
-import { groupDataTypes } from '@/types/groupDataTypes'
+import { menuListDataTypes } from '@/types/groupDataTypes'
 import styles from './groupList.module.scss'
 import GroupListCard from '@/components/group/groupList/groupListCard/GroupListCard'
 
-const GroupList = ({ data }: { data: groupDataTypes[] }) => {
+const GroupList = ({ data }: { data: menuListDataTypes[] }) => {
   return (
     <div className={styles.container}>
-      {data.map((item: groupDataTypes) => (
-        <GroupListCard key={item.id} title={item.title} menu={item.menu} favorites={item.favorites} />
+      {data.map((item: menuListDataTypes) => (
+        <GroupListCard key={item.groupId} groupName={item.groupName} menu={item.newItem} favorite={item.favorite} />
       ))}
     </div>
   )
