@@ -28,5 +28,8 @@
     &:last-of-type {
       border: none;
     }
+    &:only-child {
+      border-bottom: 1px solid $gray-200;
+    }
   }
 }
