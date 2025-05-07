@@ -17,11 +17,7 @@ const GroupListCard = ({ groupName, menu, favorite }: groupListCardProps) => {
       <button type="button">{favorite === true ? <FavoritesFillIcon /> : <FavoritesIcon />}</button>
       <div className={styles.textArea}>
         <p className={styles.title}>{groupName}</p>
-        {menu.map((item) => (
-          <span key={item.id} className={styles.desc}>
-            {item.menu},
-          </span>
-        ))}
+        <span className={styles.desc}>{menu.map((item) => item.menu).join(', ')}</span>
       </div>
       <button type="button">
         <EditIcon />
