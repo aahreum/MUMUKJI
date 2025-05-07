@@ -1,7 +1,14 @@
 @use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
 
 .container {
-  margin: 12px 0;
-  @include flex.flexLayout($direction: column);
+  margin: 16px 0;
+  @include flex.flexLayout($direction: column, $x: flex-start);
   gap: 12px;
+  .groupLength {
+    @include font.fontStyle($size: $font-size-l, $weight: 500, $color: $gray-900);
+    .acc {
+      color: $secondary-500;
+    }
+  }
 }
