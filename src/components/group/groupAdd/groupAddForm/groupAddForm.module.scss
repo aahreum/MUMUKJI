@@ -13,6 +13,18 @@
       color: $secondary-500;
     }
   }
+  .finishMsg {
+    padding: 9px 20px;
+    @include flex.flexLayout();
+    gap: 8px;
+    border-radius: 8px;
+    background-color: $gray-50;
+    @include font.fontStyle($weight: 700, $color: $gray-300);
+
+    > svg > path {
+      fill: $gray-300;
+    }
+  }
 }
 
 .formContainer {
@@ -22,13 +34,20 @@
   background-color: $gray-0;
   border-radius: 16px;
   @include flex.flexLayout($direction: column, $x: flex-start);
-
-  .buttonArea {
-    margin-left: auto;
-    @include flex.flexLayout();
-    > button {
-      margin-top: 8px;
-      margin-left: 8px;
+  .formBottomArea {
+    width: 100%;
+    margin-top: 8px;
+    @include flex.flexLayout($x: flex-start);
+    .formErrorMsg {
+      padding-left: 8px;
+      @include font.fontStyle($size: $font-size-xs, $color: $negative-500);
+    }
+    .buttonArea {
+      margin-left: auto;
+      @include flex.flexLayout();
+      > button {
+        margin-left: 8px;
+      }
     }
   }
 }
