@@ -1,34 +1,25 @@
-import styles from '@/styles/pages/groupAdd.module.scss'
-import useModal from '@/hooks/useModal'
-import AddIcon from '@/assets/icons/add.svg?react'
-import EditIcon from '@/assets/icons/edit.svg?react'
+import { useMemo, useRef } from 'react'
+import useGroup from '@/hooks/useGroup'
+import GroupAddHeader from '@/components/group/groupAdd/GroupAddHeader/GroupAddHeader'
 import GroupAddForm from '@/components/group/groupAdd/groupAddForm/GroupAddForm'
-import Button from '@/components/common/button/Button'
-import GroupNameModal from '@/components/group/groupAdd/groupNameModal/GroupNameModal'
+import MenuList from '@/components/group/groupAdd/menuList/MenuList'
+import usePrompt from '@/hooks/usePrompt'
 
 const GroupAdd = () => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const { groupName, menuList, resetData } = useGroup()
+  const initialGroupNameRef = useRef(groupName)
+
+  const isDirty = useMemo(() => {
+    return groupName !== initialGroupNameRef.current || menuList.length > 0
+  }, [groupName, menuList])
+
+  usePrompt(isDirty, '변경된 내용이 있습니다. 정말로 나가시겠습니까?', resetData)
+
   return (
     <>
-      {isOpen && <GroupNameModal closeModal={closeModal} />}
-      <div className={styles.groupNameContainer}>
-        <button className={styles.groupNameControlButton}>취소</button>
-        <button className={styles.groupNameEditButton} onClick={openModal}>
-          그룹 01
-          <EditIcon />
-        </button>
-        <button disabled className={styles.groupNameControlButton}>
-          저장
-        </button>
-      </div>
-      <div className={styles.formTopContainer}>
-        <div className={styles.menuListCountArea}>
-          <span>메뉴 목록</span>
-          <span className={styles.menuListCountAcc}>00</span>
-        </div>
-        <Button icon={<AddIcon width={16} height={16} />} label="메뉴 추가" color="secondary" disabled size="s" roundType="square" />
-      </div>
+      <GroupAddHeader />
       <GroupAddForm />
+      <MenuList />
     </>
   )
 }
