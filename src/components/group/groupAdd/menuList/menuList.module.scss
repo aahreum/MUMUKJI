@@ -25,5 +25,8 @@
         @include font.fontStyle($weight: 500, $color: $gray-900);
       }
     }
+    &:last-of-type {
+      border: none;
+    }
   }
 }
