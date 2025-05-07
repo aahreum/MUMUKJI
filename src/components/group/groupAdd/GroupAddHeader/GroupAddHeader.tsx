@@ -11,11 +11,7 @@ const GroupAddHeader = () => {
   const { groupName, updateGroupName, saveDataToLocalStorage, menuList } = useGroup()
 
   const handleBackButton = () => {
-    if (window.history.length <= 2) {
-      navigate('/')
-    } else {
-      navigate(-1)
-    }
+    navigate(-1)
   }
   return (
     <>
