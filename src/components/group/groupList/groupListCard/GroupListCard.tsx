@@ -7,7 +7,7 @@ import TrashIcon from '@/assets/icons/groupList/trash.svg?react'
 
 interface groupListCardProps {
   groupName: string
-  menu: newItemDataTypes
+  menu: newItemDataTypes[]
   favorite: boolean
 }
 
@@ -17,7 +17,11 @@ const GroupListCard = ({ groupName, menu, favorite }: groupListCardProps) => {
       <button type="button">{favorite === true ? <FavoritesFillIcon /> : <FavoritesIcon />}</button>
       <div className={styles.textArea}>
         <p className={styles.title}>{groupName}</p>
-        <p className={styles.desc}>{menu.menu}</p>
+        {menu.map((item) => (
+          <span key={item.id} className={styles.desc}>
+            {item.menu},
+          </span>
+        ))}
       </div>
       <button type="button">
         <EditIcon />
