@@ -4,7 +4,7 @@ import THEME_ICON_MAP from '@/constants/themeIconMap'
 import TrashIcon from '@/assets/icons/groupList/trash.svg?react'
 
 const MenuList = () => {
-  const { menuList } = useGroup()
+  const { menuList, removeMenu } = useGroup()
   const getThemeIcon = (theme: string) => {
     return THEME_ICON_MAP[theme]
   }
@@ -20,7 +20,14 @@ const MenuList = () => {
               <p className={styles.theme}>{item.theme}</p>
               <p className={styles.menu}>{item.menu}</p>
             </div>
-            <TrashIcon />
+            <button
+              type="button"
+              onClick={() => {
+                removeMenu(item.id)
+              }}
+            >
+              <TrashIcon />
+            </button>
           </li>
         ))}
     </ul>
