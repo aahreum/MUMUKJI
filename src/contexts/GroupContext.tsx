@@ -12,6 +12,7 @@ interface GroupContextType {
   updateGroupName: (name: string) => void
   saveDataToLocalStorage: () => void
   resetData: () => void
+  isSaving: boolean
 }
 
 export const GroupContext = createContext<GroupContextType | undefined>(undefined)
@@ -23,6 +24,7 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
   const [groupId, setGroupId] = useState<number>(urlGroupId || 0)
   const [groupName, setGroupName] = useState<string>('')
   const [menuList, setMenuList] = useState<newItemDataTypes[]>([])
+  const [isSaving, setIsSaving] = useState<boolean>(false)
 
   useEffect(() => {
     const storedData = localStorage.getItem('menuList')
@@ -70,6 +72,7 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const saveDataToLocalStorage = () => {
+    setIsSaving(true)
     const storedData = localStorage.getItem('menuList')
     const storedGroups = storedData ? JSON.parse(storedData) : {}
 
@@ -81,8 +84,12 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
     storedGroups[urlGroupId].menu = menuList
     localStorage.setItem('menuList', JSON.stringify(storedGroups))
 
-    navigate('/group')
     resetData()
+
+    setTimeout(() => {
+      navigate('/group')
+      setIsSaving(false)
+    }, 0)
   }
 
   return (
@@ -97,6 +104,7 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
         updateGroupName,
         saveDataToLocalStorage,
         resetData,
+        isSaving,
       }}
     >
       {children}
