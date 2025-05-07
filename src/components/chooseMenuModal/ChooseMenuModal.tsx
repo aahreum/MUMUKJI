@@ -3,10 +3,10 @@ import styles from './chooseMenuModal.module.scss'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
 import Title from '@/components/common/title/Title'
 import FoodCategoryButton from './foodCategoryButton/FoodCategoryButton'
-import CheckBox from '../common/checkbox/Checkbox'
-import Button from '../common/button/Button'
+import CheckBox from '@/components/common/checkbox/Checkbox'
+import Button from '@/components/common/button/Button'
 import useModal from '@/hooks/useModal'
-import FullModalCotainer from '../common/modal/FullModalCotainer'
+import FullModalCotainer from '@/components/common/modal/FullModalCotainer'
 import ResultModal from './resultModal/ResultModal'
 
 interface chooseMenuModalType {
