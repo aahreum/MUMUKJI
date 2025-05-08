@@ -1,9 +1,16 @@
-import { useEffect } from 'react'
-import { useBlocker } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { useBlocker, useNavigate, Location } from 'react-router-dom'
 
 const usePrompt = (when: boolean, message: string, onConfirm?: () => void) => {
-  const blocker = useBlocker(({ currentLocation, nextLocation }) => {
-    return when && currentLocation.pathname !== nextLocation.pathname
+  const navigate = useNavigate()
+  const lastLocationRef = useRef<Location | null>(null)
+
+  const blocker = useBlocker((tx) => {
+    if (when && tx.currentLocation.pathname !== tx.nextLocation.pathname) {
+      lastLocationRef.current = tx.nextLocation
+      return true
+    }
+    return false
   })
 
   useEffect(() => {
@@ -26,12 +33,14 @@ const usePrompt = (when: boolean, message: string, onConfirm?: () => void) => {
       if (confirmLeave) {
         onConfirm?.()
         blocker.proceed()
-        setTimeout(() => window.history.back(), 0)
+        if (lastLocationRef.current) {
+          navigate(lastLocationRef.current.pathname, { replace: true })
+        }
       } else {
         blocker.reset()
       }
     }
-  }, [blocker, message, onConfirm])
+  }, [blocker, message, onConfirm, navigate])
 }
 
 export default usePrompt
