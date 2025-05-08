@@ -30,18 +30,21 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
     const storedData = localStorage.getItem('menuList')
     const storedGroups = storedData ? JSON.parse(storedData) : {}
 
-    if (!urlGroupId) {
-      const groupIds = Object.keys(storedGroups).map(Number)
-      const maxGroupId = groupIds.length > 0 ? Math.max(...groupIds) : 0
-      setGroupId(maxGroupId)
-    } else {
+    if (urlGroupId) {
       const group = storedGroups[urlGroupId]
       if (group) {
         setGroupName(group.groupName)
         setMenuList(group.menu || [])
       } else {
         setGroupName(`그룹 ${urlGroupId < 10 ? `0${urlGroupId}` : urlGroupId}`)
+        setMenuList([])
       }
+    } else {
+      const groupIds = Object.keys(storedGroups).map(Number)
+      const maxGroupId = groupIds.length > 0 ? Math.max(...groupIds) : 0
+      setGroupId(maxGroupId)
+      setGroupName(`그룹 ${maxGroupId < 10 ? `0${maxGroupId + 1}` : maxGroupId + 1}`)
+      setMenuList([])
     }
   }, [urlGroupId])
 
