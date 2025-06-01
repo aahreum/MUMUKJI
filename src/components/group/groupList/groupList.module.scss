@@ -10,5 +10,8 @@
     .acc {
       color: $secondary-500;
     }
+    .max {
+      @include font.fontStyle($size: $font-size-s, $weight: 500, $color: $gray-400);
+    }
   }
 }

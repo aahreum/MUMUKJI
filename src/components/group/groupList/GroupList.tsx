@@ -6,7 +6,11 @@ const GroupList = ({ data }: { data: menuListDataTypes[] }) => {
   return (
     <div className={styles.container}>
       <p className={styles.groupLength}>
-        그룹 <span className={styles.acc}>{data.length}</span>
+        그룹{' '}
+        <span className={styles.acc}>
+          {data.length}
+          <span className={styles.max}>/20</span>
+        </span>
       </p>
       {data.map((item: menuListDataTypes) => (
         <GroupListCard key={item.groupId} groupName={item.groupName} menu={item.newItem} favorite={item.favorite} />
