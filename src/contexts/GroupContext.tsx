@@ -1,14 +1,15 @@
 import { createContext, useEffect, useState, ReactNode, SetStateAction, Dispatch } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { newItemDataTypes } from '@/types/groupDataTypes'
+import { menuListDataTypes, newItemDataTypes, storedGroupData } from '@/types/groupDataTypes'
 
 interface GroupContextType {
   groupId: number
   groupName: string
   menuList: newItemDataTypes[]
+  groupList: menuListDataTypes[]
   favoriteGroup: (targetId: number) => void
   addGroup: () => void
-  removeGroup: () => void
+  removeGroup: (targetId: number) => void
   addMenu: (item: newItemDataTypes) => string | null
   removeMenu: (id: number) => void
   updateGroupName: (name: string) => void
@@ -32,19 +33,22 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
   const [isSaving, setIsSaving] = useState<boolean>(false)
   const [isFavorite, setIsFavorite] = useState<Record<number, boolean>>({})
   const [isFavoriteLimitModalOpen, setIsFavoriteLimitModalOpen] = useState<boolean>(false)
+  const [storedGroups, setStoredGroups] = useState<Record<number, storedGroupData>>({})
 
   useEffect(() => {
     const storedData = localStorage.getItem('menuList')
-    const storedGroups = storedData ? JSON.parse(storedData) : {}
+    const parsedData: Record<number, storedGroupData> = storedData ? JSON.parse(storedData) : {}
+    setStoredGroups(parsedData)
 
     const favorites: Record<number, boolean> = {}
-    for (const key in storedGroups) {
-      favorites[Number(key)] = storedGroups[key].favorite || false
+    for (const key in parsedData) {
+      const numericKey = Number(key)
+      favorites[numericKey] = parsedData[numericKey].favorite || false
     }
     setIsFavorite(favorites)
 
     if (urlGroupId) {
-      const group = storedGroups[urlGroupId]
+      const group = parsedData[urlGroupId]
       if (group) {
         setGroupName(group.groupName)
         setMenuList(group.menu || [])
@@ -52,8 +56,9 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
         setGroupName(`그룹 ${urlGroupId < 10 ? `0${urlGroupId}` : urlGroupId}`)
         setMenuList([])
       }
+      setGroupId(urlGroupId)
     } else {
-      const groupIds = Object.keys(storedGroups).map(Number)
+      const groupIds = Object.keys(parsedData).map(Number)
       const maxGroupId = groupIds.length > 0 ? Math.max(...groupIds) : 0
       setGroupId(maxGroupId)
       setGroupName(`그룹 ${maxGroupId < 10 ? `0${maxGroupId + 1}` : maxGroupId + 1}`)
@@ -61,12 +66,26 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [urlGroupId])
 
+  const groupList: menuListDataTypes[] = Object.entries(storedGroups)
+    .map(([key, value]) => ({
+      groupId: parseInt(key),
+      groupName: value.groupName,
+      favorite: value.favorite,
+      newItem: value.menu,
+    }))
+    .sort((a, b) => {
+      if (a.favorite && !b.favorite) return -1
+      if (!a.favorite && b.favorite) return 1
+      return b.groupId - a.groupId
+    })
+
   const updateLocalStorage = (updatedFavorites: Record<number, boolean>, targetId: number) => {
-    const storedData = localStorage.getItem('menuList')
-    const storedGroups = storedData ? JSON.parse(storedData) : {}
-    if (storedGroups[targetId]) {
-      storedGroups[targetId].favorite = updatedFavorites[targetId]
-      localStorage.setItem('menuList', JSON.stringify(storedGroups))
+    const data = localStorage.getItem('menuList')
+    const parsedData: Record<number, storedGroupData> = data ? JSON.parse(data) : {}
+    if (parsedData[targetId]) {
+      parsedData[targetId].favorite = updatedFavorites[targetId]
+      localStorage.setItem('menuList', JSON.stringify(parsedData))
+      setStoredGroups(parsedData)
     }
   }
 
@@ -93,16 +112,30 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const addGroup = () => {
-    const newGroupId = groupId + 1
+    const maxId = Math.max(0, ...Object.keys(storedGroups).map(Number))
+    const newGroupId = maxId + 1
     setGroupId(newGroupId)
     navigate(`/group/${newGroupId}`)
   }
 
-  const removeGroup = () => {}
+  const removeGroup = (targetGroupId: number) => {
+    setStoredGroups((prev) => {
+      if (!(targetGroupId in prev)) return prev
+      const updated = { ...prev }
+      delete updated[targetGroupId]
+      localStorage.setItem('menuList', JSON.stringify(updated))
+      return updated
+    })
+
+    setIsFavorite((favPrev) => {
+      const updatedFav = { ...favPrev }
+      delete updatedFav[targetGroupId]
+      return updatedFav
+    })
+  }
 
   const addMenu = (item: newItemDataTypes): string | null => {
-    const isMenuExist = menuList.some((m) => m.menu === item.menu)
-    if (isMenuExist) {
+    if (menuList.some((m) => m.menu === item.menu)) {
       return '같은 이름의 목록이 존재합니다. 다시 입력해주세요.'
     }
     setMenuList((prev) => [...prev, item])
@@ -122,17 +155,17 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
 
   const saveDataToLocalStorage = () => {
     setIsSaving(true)
-    const storedData = localStorage.getItem('menuList')
-    const storedGroups = storedData ? JSON.parse(storedData) : {}
+    const data = localStorage.getItem('menuList')
+    const parsedData: Record<number, storedGroupData> = data ? JSON.parse(data) : {}
 
-    if (!storedGroups[urlGroupId]) {
-      storedGroups[urlGroupId] = { menu: [], favorite: false }
+    parsedData[urlGroupId] = {
+      groupName,
+      menu: menuList,
+      favorite: isFavorite[urlGroupId] || false,
     }
 
-    storedGroups[urlGroupId].groupName = groupName
-    storedGroups[urlGroupId].menu = menuList
-    localStorage.setItem('menuList', JSON.stringify(storedGroups))
-
+    localStorage.setItem('menuList', JSON.stringify(parsedData))
+    setStoredGroups(parsedData)
     resetData()
 
     setTimeout(() => {
@@ -147,6 +180,7 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
         groupId,
         groupName,
         menuList,
+        groupList,
         favoriteGroup,
         addGroup,
         removeGroup,

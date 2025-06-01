@@ -10,9 +10,10 @@ interface groupListCardProps {
   menu: newItemDataTypes[]
   favorite: boolean
   favoriteGroup: () => void
+  removeGroup: () => void
 }
 
-const GroupListCard = ({ groupName, menu, favorite, favoriteGroup }: groupListCardProps) => {
+const GroupListCard = ({ groupName, menu, favorite, favoriteGroup, removeGroup }: groupListCardProps) => {
   return (
     <div className={styles.container}>
       <button type="button" onClick={favoriteGroup}>
@@ -25,7 +26,7 @@ const GroupListCard = ({ groupName, menu, favorite, favoriteGroup }: groupListCa
       <button type="button">
         <EditIcon />
       </button>
-      <button type="button">
+      <button type="button" onClick={removeGroup}>
         <TrashIcon />
       </button>
     </div>

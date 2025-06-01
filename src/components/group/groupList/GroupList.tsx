@@ -5,7 +5,7 @@ import GroupListCard from '@/components/group/groupList/groupListCard/GroupListC
 import BasicModal from '@/components/common/modal/BasicModal'
 
 const GroupList = ({ data }: { data: menuListDataTypes[] }) => {
-  const { isFavorite, favoriteGroup, isFavoriteLimitModalOpen, setIsFavoriteLimitModalOpen } = useGroup()
+  const { isFavorite, favoriteGroup, isFavoriteLimitModalOpen, setIsFavoriteLimitModalOpen, removeGroup } = useGroup()
 
   return (
     <>
@@ -42,6 +42,7 @@ const GroupList = ({ data }: { data: menuListDataTypes[] }) => {
             menu={item.newItem}
             favorite={isFavorite[item.groupId] || false}
             favoriteGroup={() => favoriteGroup(item.groupId)}
+            removeGroup={() => removeGroup(item.groupId)}
           />
         ))}
       </div>
