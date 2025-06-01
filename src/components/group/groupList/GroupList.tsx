@@ -5,7 +5,7 @@ import GroupListCard from '@/components/group/groupList/groupListCard/GroupListC
 import BasicModal from '@/components/common/modal/BasicModal'
 
 const GroupList = ({ data }: { data: menuListDataTypes[] }) => {
-  const { isFavorite, favoriteGroup, isFavoriteLimitModalOpen, setIsFavoriteLimitModalOpen, removeGroup } = useGroup()
+  const { isFavorite, favoriteGroup, isFavoriteLimitModalOpen, setIsFavoriteLimitModalOpen, removeGroup, isConfirmModalOpen, confirmRemove, cancelRemoveGroup } = useGroup()
 
   return (
     <>
@@ -27,14 +27,30 @@ const GroupList = ({ data }: { data: menuListDataTypes[] }) => {
           firstBtnOnClick={() => setIsFavoriteLimitModalOpen(false)}
         />
       )}
+      {isConfirmModalOpen && (
+        <BasicModal
+          modalType="confirmN"
+          title="그룹을 삭제할까요?"
+          desc={
+            <>
+              한 번 삭제하면
+              <br /> 다시 되돌릴 수 없어요.
+            </>
+          }
+          firstBtnLabel="삭제"
+          firstBtnOnClick={confirmRemove}
+          secondBtnLabel="취소"
+          secondBtnOnClick={cancelRemoveGroup}
+        />
+      )}
       <div className={styles.container}>
-        <p className={styles.groupLength}>
+        <div className={styles.groupLength}>
           그룹
           <span className={styles.acc}>
             {data.length}
             <span className={styles.max}>/20</span>
           </span>
-        </p>
+        </div>
         {data.map((item: menuListDataTypes) => (
           <GroupListCard
             key={item.groupId}

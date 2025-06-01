@@ -10,6 +10,8 @@ interface GroupContextType {
   favoriteGroup: (targetId: number) => void
   addGroup: () => void
   removeGroup: (targetId: number) => void
+  confirmRemove: () => void
+  cancelRemoveGroup: () => void
   addMenu: (item: newItemDataTypes) => string | null
   removeMenu: (id: number) => void
   updateGroupName: (name: string) => void
@@ -19,6 +21,7 @@ interface GroupContextType {
   isFavorite: Record<number, boolean>
   isFavoriteLimitModalOpen: boolean
   setIsFavoriteLimitModalOpen: Dispatch<SetStateAction<boolean>>
+  isConfirmModalOpen: boolean
 }
 
 export const GroupContext = createContext<GroupContextType | undefined>(undefined)
@@ -34,6 +37,8 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
   const [isFavorite, setIsFavorite] = useState<Record<number, boolean>>({})
   const [isFavoriteLimitModalOpen, setIsFavoriteLimitModalOpen] = useState<boolean>(false)
   const [storedGroups, setStoredGroups] = useState<Record<number, storedGroupData>>({})
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
+  const [pendingRemoveId, setPendingRemoveId] = useState<number | null>(null)
 
   useEffect(() => {
     const storedData = localStorage.getItem('menuList')
@@ -119,19 +124,32 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const removeGroup = (targetGroupId: number) => {
+    setPendingRemoveId(targetGroupId)
+    setIsConfirmModalOpen(true)
+  }
+
+  const confirmRemove = () => {
+    if (pendingRemoveId === null) return
+
     setStoredGroups((prev) => {
-      if (!(targetGroupId in prev)) return prev
+      if (!(pendingRemoveId in prev)) return prev
       const updated = { ...prev }
-      delete updated[targetGroupId]
+      delete updated[pendingRemoveId]
       localStorage.setItem('menuList', JSON.stringify(updated))
       return updated
     })
 
     setIsFavorite((favPrev) => {
       const updatedFav = { ...favPrev }
-      delete updatedFav[targetGroupId]
+      delete updatedFav[pendingRemoveId]
       return updatedFav
     })
+    setIsConfirmModalOpen(false)
+  }
+
+  const cancelRemoveGroup = () => {
+    setPendingRemoveId(null)
+    setIsConfirmModalOpen(false)
   }
 
   const addMenu = (item: newItemDataTypes): string | null => {
@@ -184,6 +202,8 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
         favoriteGroup,
         addGroup,
         removeGroup,
+        confirmRemove,
+        cancelRemoveGroup,
         addMenu,
         removeMenu,
         updateGroupName,
@@ -193,6 +213,7 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
         isFavorite,
         isFavoriteLimitModalOpen,
         setIsFavoriteLimitModalOpen,
+        isConfirmModalOpen,
       }}
     >
       {children}
