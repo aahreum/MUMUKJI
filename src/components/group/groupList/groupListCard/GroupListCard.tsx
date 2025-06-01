@@ -9,12 +9,15 @@ interface groupListCardProps {
   groupName: string
   menu: newItemDataTypes[]
   favorite: boolean
+  favoriteGroup: () => void
 }
 
-const GroupListCard = ({ groupName, menu, favorite }: groupListCardProps) => {
+const GroupListCard = ({ groupName, menu, favorite, favoriteGroup }: groupListCardProps) => {
   return (
     <div className={styles.container}>
-      <button type="button">{favorite === true ? <FavoritesFillIcon /> : <FavoritesIcon />}</button>
+      <button type="button" onClick={favoriteGroup}>
+        {favorite ? <FavoritesFillIcon /> : <FavoritesIcon />}
+      </button>
       <div className={styles.textArea}>
         <p className={styles.title}>{groupName}</p>
         <p className={styles.desc}>{menu.map((item) => item.menu).join(', ')}</p>

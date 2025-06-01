@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, ReactNode } from 'react'
+import { createContext, useEffect, useState, ReactNode, SetStateAction, Dispatch } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { newItemDataTypes } from '@/types/groupDataTypes'
 
@@ -6,13 +6,18 @@ interface GroupContextType {
   groupId: number
   groupName: string
   menuList: newItemDataTypes[]
+  favoriteGroup: (targetId: number) => void
   addGroup: () => void
+  removeGroup: () => void
   addMenu: (item: newItemDataTypes) => string | null
   removeMenu: (id: number) => void
   updateGroupName: (name: string) => void
   saveDataToLocalStorage: () => void
   resetData: () => void
   isSaving: boolean
+  isFavorite: Record<number, boolean>
+  isFavoriteLimitModalOpen: boolean
+  setIsFavoriteLimitModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export const GroupContext = createContext<GroupContextType | undefined>(undefined)
@@ -25,10 +30,18 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
   const [groupName, setGroupName] = useState<string>('')
   const [menuList, setMenuList] = useState<newItemDataTypes[]>([])
   const [isSaving, setIsSaving] = useState<boolean>(false)
+  const [isFavorite, setIsFavorite] = useState<Record<number, boolean>>({})
+  const [isFavoriteLimitModalOpen, setIsFavoriteLimitModalOpen] = useState<boolean>(false)
 
   useEffect(() => {
     const storedData = localStorage.getItem('menuList')
     const storedGroups = storedData ? JSON.parse(storedData) : {}
+
+    const favorites: Record<number, boolean> = {}
+    for (const key in storedGroups) {
+      favorites[Number(key)] = storedGroups[key].favorite || false
+    }
+    setIsFavorite(favorites)
 
     if (urlGroupId) {
       const group = storedGroups[urlGroupId]
@@ -48,11 +61,44 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [urlGroupId])
 
+  const updateLocalStorage = (updatedFavorites: Record<number, boolean>, targetId: number) => {
+    const storedData = localStorage.getItem('menuList')
+    const storedGroups = storedData ? JSON.parse(storedData) : {}
+    if (storedGroups[targetId]) {
+      storedGroups[targetId].favorite = updatedFavorites[targetId]
+      localStorage.setItem('menuList', JSON.stringify(storedGroups))
+    }
+  }
+
+  const favoriteGroup = (targetId: number) => {
+    setIsFavorite((prev) => {
+      const isCurrentlyFavorite = prev[targetId] || false
+      const currentFavoriteCount = Object.values(prev).filter(Boolean).length
+
+      if (isCurrentlyFavorite) {
+        const updated = { ...prev, [targetId]: false }
+        updateLocalStorage(updated, targetId)
+        return updated
+      }
+
+      if (currentFavoriteCount >= 3) {
+        setIsFavoriteLimitModalOpen(true)
+        return prev
+      }
+
+      const updated = { ...prev, [targetId]: true }
+      updateLocalStorage(updated, targetId)
+      return updated
+    })
+  }
+
   const addGroup = () => {
     const newGroupId = groupId + 1
     setGroupId(newGroupId)
     navigate(`/group/${newGroupId}`)
   }
+
+  const removeGroup = () => {}
 
   const addMenu = (item: newItemDataTypes): string | null => {
     const isMenuExist = menuList.some((m) => m.menu === item.menu)
@@ -101,13 +147,18 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
         groupId,
         groupName,
         menuList,
+        favoriteGroup,
         addGroup,
+        removeGroup,
         addMenu,
         removeMenu,
         updateGroupName,
         saveDataToLocalStorage,
         resetData,
         isSaving,
+        isFavorite,
+        isFavoriteLimitModalOpen,
+        setIsFavoriteLimitModalOpen,
       }}
     >
       {children}
