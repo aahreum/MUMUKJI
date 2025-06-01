@@ -21,10 +21,6 @@ const GroupAddForm = () => {
     }
   }, [menuList])
 
-  const formatGroupNumber = (id: number) => {
-    return `${id < 10 ? `0${id}` : id}`
-  }
-
   const handleSaveMenu = (e: React.FormEvent) => {
     e.preventDefault()
     const result = addMenu({ id: Date.now(), theme: selectedItem, menu: textfield })
@@ -48,7 +44,10 @@ const GroupAddForm = () => {
       <div className={styles.formTopContainer}>
         <div className={styles.menuListCountArea}>
           <span>메뉴 목록</span>
-          <span className={styles.menuListCountAcc}>{formatGroupNumber(menuList.length)}</span>
+          <span className={styles.menuListCountAcc}>
+            {menuList.length}
+            <span className={styles.menuListCountMax}>/20</span>
+          </span>
         </div>
         {menuList.length === 20 ? (
           <div className={styles.finishMsg}>
