@@ -10,7 +10,7 @@ const GroupAddButton = () => {
 
   useEffect(() => {
     const storedData = localStorage.getItem('menuList')
-    setHasMenuList(!!storedData)
+    setHasMenuList(storedData?.length === 0 ? false : true)
   }, [])
 
   const isMainPage = location.pathname === '/'
