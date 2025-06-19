@@ -54,6 +54,7 @@ const GroupList = ({ data }: { data: menuListDataTypes[] }) => {
         {data.map((item: menuListDataTypes) => (
           <GroupListCard
             key={item.groupId}
+            groupId={item.groupId}
             groupName={item.groupName}
             menu={item.newItem}
             favorite={isFavorite[item.groupId] || false}

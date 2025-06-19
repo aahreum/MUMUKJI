@@ -4,8 +4,10 @@ import FavoritesIcon from '@/assets/icons/groupList/favorites.svg?react'
 import FavoritesFillIcon from '@/assets/icons/groupList/favorites_fill.svg?react'
 import EditIcon from '@/assets/icons/groupList/edit.svg?react'
 import TrashIcon from '@/assets/icons/groupList/trash.svg?react'
+import { Link } from 'react-router-dom'
 
 interface groupListCardProps {
+  groupId: number
   groupName: string
   menu: newItemDataTypes[]
   favorite: boolean
@@ -13,7 +15,7 @@ interface groupListCardProps {
   removeGroup: () => void
 }
 
-const GroupListCard = ({ groupName, menu, favorite, favoriteGroup, removeGroup }: groupListCardProps) => {
+const GroupListCard = ({ groupId, groupName, menu, favorite, favoriteGroup, removeGroup }: groupListCardProps) => {
   return (
     <div className={styles.container}>
       <button type="button" onClick={favoriteGroup}>
@@ -23,9 +25,9 @@ const GroupListCard = ({ groupName, menu, favorite, favoriteGroup, removeGroup }
         <p className={styles.title}>{groupName}</p>
         <p className={styles.desc}>{menu.map((item) => item.menu).join(', ')}</p>
       </div>
-      <button type="button">
+      <Link to={`/group/${groupId}`}>
         <EditIcon />
-      </button>
+      </Link>
       <button type="button" onClick={removeGroup}>
         <TrashIcon />
       </button>
