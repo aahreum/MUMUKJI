@@ -1,27 +1,28 @@
-import { useState } from 'react'
-import { modalCountState } from '@/recoil/modalCount'
+import { modalStateAtom } from '@/recoil/modalState'
 import { useRecoilState } from 'recoil'
 
-const useModal = () => {
-  const [modalCount, setModalCount] = useRecoilState(modalCountState)
-  const [isOpen, setisOpen] = useState(false)
+const useModal = (modalType: string) => {
+  const [modalState, setModalState] = useRecoilState(modalStateAtom)
+  const isOpen = modalState[modalType] || false
 
   const openModal = () => {
-    setModalCount((prev) => prev + 1)
     document.body.style.overflow = 'hidden'
-    setisOpen(true)
+    setModalState((prev) => ({ ...prev, [modalType]: true }))
   }
 
   const closeModal = () => {
-    setModalCount((prev) => prev - 1)
-    if (modalCount <= 1) {
-      document.body.style.overflow = 'auto'
-    }
-    setisOpen(false)
+    setModalState((prev) => {
+      const newState = { ...prev, [modalType]: false }
+      // 열려있는 모달 없으면 스크롤 풀기
+      if (!Object.values(newState).some(Boolean)) {
+        document.body.style.overflow = 'auto'
+      }
+      return newState
+    })
   }
 
   const closeAllModal = () => {
-    setModalCount(0)
+    setModalState({})
     document.body.style.overflow = 'auto'
   }
 
