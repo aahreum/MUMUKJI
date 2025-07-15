@@ -1,9 +1,18 @@
-export interface groupDataTypes extends groupListCardProps {
-  id: number
+export interface menuListDataTypes {
+  groupId: number
+  newItem: newItemDataTypes[]
+  favorite: boolean
+  groupName: string
 }
 
-export interface groupListCardProps {
-  title: string
+export interface newItemDataTypes {
+  id: number
+  theme: string
   menu: string
-  favorites: boolean
+}
+
+export interface storedGroupData {
+  groupName: string
+  favorite: boolean
+  menu: newItemDataTypes[]
 }

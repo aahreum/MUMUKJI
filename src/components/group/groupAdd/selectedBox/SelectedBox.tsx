@@ -1,14 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import styles from './selectedBox.module.scss'
 import ArrowIcon from '@/assets/icons/groupList/arrow_down.svg?react'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
 import ModalPotal from '@/components/common/modal/ModalPotal'
 import ModalDimmed from '@/components/common/modal/ModalDimmed'
 
-const SelectedBox = () => {
+interface selectedBoxProps {
+  selectedItem: string
+  setSelectedItem: Dispatch<SetStateAction<string>>
+}
+
+const SelectedBox = ({ selectedItem, setSelectedItem }: selectedBoxProps) => {
   const selectBoxListRef = useRef<HTMLDivElement | null>(null)
   const [isOpened, setIsOpened] = useState(false)
-  const [selectedItem, setSelectedItem] = useState<null | string>(null)
 
   const closeModal = useCallback(() => {
     document.body.style.overflow = 'auto'
@@ -33,7 +37,7 @@ const SelectedBox = () => {
       setSelectedItem(item)
       closeModal()
     },
-    [closeModal],
+    [closeModal, setSelectedItem],
   )
 
   useEffect(() => {
@@ -55,7 +59,7 @@ const SelectedBox = () => {
   return (
     <>
       <button type="button" className={styles.selectedBox} onClick={handleOpen}>
-        <p>{selectedItem === null ? '종류 선택' : selectedItem}</p> <ArrowIcon />
+        <p>{selectedItem === '' ? '종류 선택' : selectedItem}</p> <ArrowIcon />
       </button>
       {isOpened && (
         <ModalPotal>

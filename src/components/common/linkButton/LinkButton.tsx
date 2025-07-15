@@ -1,18 +1,44 @@
 import { Link } from 'react-router-dom'
-import styles from './linkButton.module.scss'
+import styles from '@/styles/components/button.module.scss'
 
-interface linkButtonProps {
-  /** 이동 경로 입력 */
+interface LinkButtonProps extends React.LinkHTMLAttributes<HTMLLinkElement> {
   link: string
-  /** 버튼 타입 선택 */
-  primary?: boolean
-  /** 버튼 라벨 */
   label: string
+  icon?: React.ReactNode
+  styleType?: 'solid' | 'outline'
+  roundType?: 'loundSquare' | 'square' | 'capsule'
+  size?: 'xs' | 's' | 'm' | 'l'
+  color?: 'primary' | 'secondary' | 'tertiary' | 'negative'
+  full?: boolean
 }
 
-const LinkButton = ({ link, label, primary = true }: linkButtonProps): React.ReactElement => {
+const LinkButton = ({ link, label, icon, styleType = 'solid', roundType = 'loundSquare', size = 'l', color = 'primary', full = true, className }: LinkButtonProps) => {
   return (
-    <Link className={`${styles.button} ${primary ? '' : styles.sub}`} to={link}>
+    <Link
+      to={link}
+      className={`${styles.container} ${styleType === 'solid' ? styles.solid : styles.outline}  
+      ${roundType === 'loundSquare' ? styles.round : roundType === 'square' ? styles['round--square'] : styles['round--capsule']} 
+      ${size === 'l' ? styles.size : size === 'm' ? styles['size--m'] : size === 's' ? styles['size--s'] : styles['size--xs']} 
+      ${
+        styleType === 'solid'
+          ? color === 'secondary'
+            ? styles['solid--secondary']
+            : color === 'tertiary'
+              ? styles['solid--tertiary']
+              : color === 'negative'
+                ? styles['solid--negative']
+                : styles['solid--primary']
+          : color === 'secondary'
+            ? styles['outline--secondary']
+            : color === 'tertiary'
+              ? styles['outline--tertiary']
+              : color === 'negative'
+                ? styles['outline--negative']
+                : styles['outline--primary']
+      }
+      ${full === true ? styles['size--full'] : ''} ${className}`}
+    >
+      {icon}
       {label}
     </Link>
   )

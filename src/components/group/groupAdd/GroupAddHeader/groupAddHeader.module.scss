@@ -1,0 +1,28 @@
+@use '@/styles/mixins/_font' as font;
+@use '@/styles/mixins/_flex' as flex;
+
+.container {
+  margin: 0 -16px;
+  height: 72px;
+  @include flex.flexLayout($y: space-between);
+  gap: 8px;
+  border-bottom: 1px solid $gray-200;
+
+  .editButton {
+    @include flex.flexLayout();
+    gap: 8px;
+    @include font.fontStyle($size: $font-size-2xl, $weight: 700, $color: $gray-900);
+  }
+  .controlButton {
+    width: 64px;
+    height: 72px;
+    @include font.fontStyle($size: $font-size-l, $weight: 700);
+  }
+  .controlButton:disabled {
+    background-color: transparent;
+    color: $gray-400;
+  }
+  .saveButton {
+    color: $secondary-500;
+  }
+}

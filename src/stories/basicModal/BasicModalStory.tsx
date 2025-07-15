@@ -1,19 +1,9 @@
 import styles from '@/components/common/modal/basicModal.module.scss'
+import { BasicModalProps } from '@/types/BasicModalTypes'
 import Button from '@/components/common/button/Button'
-import { buttonColorTypes } from '@/types/buttonColorTypes'
 
-interface BasicModalProps {
-  title: React.ReactNode
-  desc: React.ReactNode
-  firstBtnColor: buttonColorTypes
-  firstBtnLabel: string
-  firstBtnOnClick: () => void
-  secondBtnColor?: buttonColorTypes
-  secondBtnLabel?: string
-  secondBtnOnClick?: () => void
-}
-
-const BasicModal = ({ title, desc, firstBtnColor, firstBtnLabel, firstBtnOnClick, secondBtnColor, secondBtnLabel, secondBtnOnClick }: BasicModalProps) => {
+const BasicModal = (props: BasicModalProps) => {
+  const { modalType, title, desc, firstBtnLabel, firstBtnOnClick } = props
   return (
     <>
       <div style={{ width: '600px', height: '400px', backgroundColor: 'rgba(0, 0, 0, 0.4)' }} />
@@ -23,8 +13,28 @@ const BasicModal = ({ title, desc, firstBtnColor, firstBtnLabel, firstBtnOnClick
           <p className={styles.desc}>{desc}</p>
         </div>
         <div className={styles.buttonArea}>
-          <Button color={firstBtnColor} size="m" label={firstBtnLabel} onClick={firstBtnOnClick} />
-          {secondBtnLabel && <Button color={secondBtnColor} size="m" label={secondBtnLabel} onClick={secondBtnOnClick} />}
+          {modalType === 'alert' ? (
+            <Button styleType="outline" roundType="square" color="tertiary" size="s" label={firstBtnLabel} onClick={firstBtnOnClick} />
+          ) : (
+            <>
+              <Button
+                color={modalType === 'confirmN' ? 'negative' : 'tertiary'}
+                styleType={modalType === 'confirmN' ? 'solid' : 'outline'}
+                roundType="square"
+                size="s"
+                label={firstBtnLabel}
+                onClick={firstBtnOnClick}
+              />
+              <Button
+                styleType={modalType === 'confirmN' ? 'outline' : 'solid'}
+                color={modalType === 'confirmN' ? 'tertiary' : 'secondary'}
+                roundType="square"
+                size="s"
+                label={props.secondBtnLabel}
+                onClick={props.secondBtnOnClick}
+              />
+            </>
+          )}
         </div>
       </div>
     </>

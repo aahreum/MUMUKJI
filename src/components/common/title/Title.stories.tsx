@@ -4,33 +4,60 @@ import Title from './Title'
 const meta = {
   title: 'Components/common/Title',
   component: Title,
+  tags: ['autodocs'],
   parameters: {
-    componentSubtitle: '타이틀 컴포넌트는 화면(페이지, 모달 등) 메인 텍스트에 사용합니다.',
+    componentSubtitle: '머먹지 페이지나 모달에서 사용하는 타이틀 컴포넌트 입니다.',
     docs: {
       description: {
-        component: `<li>children: 타이틀을 입력합니다. (&lt;br /&gt;을 사용하여 줄바꿈이 가능합니다)</li><li>textAlignCenter: 텍스트 정렬 값으로 <span className='css-o1d7ko css-in3yi3'>'true' | 'false'</span> 중 하나를 선택할 수 있습니다.</li>
-        `,
+        component:
+          '<li><code>children</code>에 타이틀을 입력합니다. (&lt;br /&gt;태그를 사용해서 줄바꿈을 할 수 있습니다.)</li><li><code>textAlignCenter</code>로 텍스트 정렬을 설정합니다. <code>true</code><code>false</code> 중 하나를 선택할 수 있습니다.</li>',
       },
     },
   },
-  tags: ['autodocs'],
-  decorators: (story) => <div style={{ width: '620px' }}>{story()}</div>,
+
+  argTypes: {
+    children: {
+      description: '타이틀 입력',
+      table: {
+        category: 'required',
+        type: { summary: 'ReactNode' },
+      },
+    },
+    textAlignCenter: {
+      table: {
+        category: 'optional',
+      },
+    },
+  },
+  decorators: (Story) => <div style={{ width: '620px' }}>{<Story />}</div>,
 } satisfies Meta<typeof Title>
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof Title>
 
 export const TitleCenter: Story = {
   args: {
-    children: '가운데 정렬 타이틀',
+    children: '어떤 음식을 좋아해?',
     textAlignCenter: true,
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1754-6936&t=pD666ta77og4q7AJ-1',
+    },
   },
 }
 
 export const TitleLeft: Story = {
   args: {
-    children: '왼쪽 정렬 타이틀',
+    children: '어떤 음식을 좋아해?',
     textAlignCenter: false,
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1754-6936&t=pD666ta77og4q7AJ-1',
+    },
   },
 }

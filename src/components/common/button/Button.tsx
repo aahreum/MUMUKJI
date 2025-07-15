@@ -1,25 +1,56 @@
-import styles from './button.module.scss'
-import { buttonColorTypes } from '@/types/buttonColorTypes'
+import styles from '@/styles/components/button.module.scss'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /** 버튼 텍스트 */
   label: string
-  /** 버튼 크기 */
-  size?: 's' | 'm' | 'l'
-  /** 버튼 컬러 스타일 */
-  color?: buttonColorTypes
-  /** 버튼 폰트 스타일 */
-  light?: boolean
+  icon?: React.ReactNode
+  styleType?: 'solid' | 'outline'
+  roundType?: 'loundSquare' | 'square' | 'capsule'
+  size?: 'xs' | 's' | 'm' | 'l'
+  color?: 'primary' | 'secondary' | 'tertiary' | 'negative'
+  full?: boolean
 }
 
-const Button = ({ type = 'button', label, onClick, color = 'primary', disabled = false, light = false, size = 'l' }: ButtonProps) => {
+const Button = ({
+  label,
+  icon,
+  styleType = 'solid',
+  roundType = 'loundSquare',
+  size = 'l',
+  color = 'primary',
+  full = false,
+  type = 'button',
+  disabled = false,
+  onClick,
+  className,
+}: ButtonProps) => {
   return (
     <button
-      disabled={disabled}
-      className={`${styles.button} ${color === 'primary' ? '' : color === 'secondary' ? styles.secondary : color === 'negative' ? styles.negative : styles.basic} ${light ? styles.light : ''} ${size === 'l' ? '' : size === 'm' ? styles.sizeM : styles.sizeS}`}
+      className={`${styles.container} ${styleType === 'solid' ? styles.solid : styles.outline}  
+      ${roundType === 'loundSquare' ? styles.round : roundType === 'square' ? styles['round--square'] : styles['round--capsule']} 
+      ${size === 'l' ? styles.size : size === 'm' ? styles['size--m'] : size === 's' ? styles['size--s'] : styles['size--xs']} 
+      ${
+        styleType === 'solid'
+          ? color === 'secondary'
+            ? styles['solid--secondary']
+            : color === 'tertiary'
+              ? styles['solid--tertiary']
+              : color === 'negative'
+                ? styles['solid--negative']
+                : styles['solid--primary']
+          : color === 'secondary'
+            ? styles['outline--secondary']
+            : color === 'tertiary'
+              ? styles['outline--tertiary']
+              : color === 'negative'
+                ? styles['outline--negative']
+                : styles['outline--primary']
+      }
+      ${full === true ? styles['size--full'] : ''} ${className}`}
       type={type}
+      disabled={disabled}
       onClick={onClick}
     >
+      {icon}
       {label}
     </button>
   )

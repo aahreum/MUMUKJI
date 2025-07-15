@@ -1,25 +1,82 @@
 @use '@/styles/base/_variablesColor' as *;
 @use '@/styles/base/_variablesFont' as *;
-@use '@/styles/mixins/_font' as font;
+@use '@/styles/base/_variablesButton' as *;
+@use '@/styles/mixins/_button' as b;
 
-%buttonPrimary {
+// button common style rules
+// size
+%buttonSizeFull {
   width: 100%;
-  height: 64px;
-  border-radius: 24px;
-  background-color: $primary-500;
-  @include font.fontStyle($weight: 800, $color: $gray-0, $size: $font-size-l);
 }
 
-%buttonSecondary {
-  background-color: $secondary-500;
+%buttonSizeL {
+  @include b.buttonStyle($button-padding-l, $button-height-l, $font-weight-extraBold, $font-size-l);
 }
 
-%buttonNegative {
-  background-color: $negative-500;
+%buttonSizeM {
+  @include b.buttonStyle($button-padding-m, $button-height-m, $font-weight-bold, $font-size-l);
 }
 
-%buttonBasic {
+%buttonSizeS {
+  @include b.buttonStyle($button-padding-s, $button-height-s, $font-weight-bold, $font-size-m);
+}
+
+%buttonSizeXS {
+  @include b.buttonStyle($button-padding-xs, $button-height-xs, $font-weight-bold, $font-size-m);
+}
+
+// solid
+%buttonPrimarySolid {
+  @include b.buttonColor($primary-500, $gray-0);
+}
+
+%buttonSecondarySolid {
+  @include b.buttonColor($secondary-500, $gray-0);
+}
+
+%buttonTertiarySolid {
+  @include b.buttonColor($gray-50, $gray-700);
+}
+
+%buttonNegativeSolid {
+  @include b.buttonColor($negative-500, $gray-0);
+}
+
+// outline
+%buttonPrimaryOutline {
+  @include b.buttonColor($gray-0, $primary-600);
+  border: 1px solid $primary-200;
+}
+
+%buttonSecondaryOutline {
+  @include b.buttonColor($gray-0, $secondary-600);
+  border: 1px solid $secondary-200;
+}
+
+%buttonTertiaryOutline {
+  @include b.buttonColor($gray-0, $gray-700);
   border: 1px solid $gray-200;
-  background-color: $gray-0;
-  color: $gray-700;
+}
+
+%buttonNegativeOutline {
+  @include b.buttonColor($gray-0, $negative-600);
+  border: 1px solid $negative-200;
+}
+
+// radius
+%buttonRoundSquare {
+  border-radius: $button-radius-roundSquare;
+}
+
+%buttonSquare {
+  border-radius: $button-radius-square;
+}
+
+%buttonCapsule {
+  border-radius: $button-radius-capsule;
+}
+
+%buttonDisabled {
+  border: none;
+  @include b.buttonColor($gray-50, $gray-300);
 }

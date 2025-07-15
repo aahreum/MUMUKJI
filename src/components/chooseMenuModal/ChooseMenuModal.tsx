@@ -3,10 +3,10 @@ import styles from './chooseMenuModal.module.scss'
 import MAIN_MENU_LIST from '@/constants/mainMenuList'
 import Title from '@/components/common/title/Title'
 import FoodCategoryButton from './foodCategoryButton/FoodCategoryButton'
-import CheckBox from '../common/checkbox/Checkbox'
-import Button from '../common/button/Button'
+import CheckBox from '@/components/common/checkbox/Checkbox'
+import Button from '@/components/common/button/Button'
 import useModal from '@/hooks/useModal'
-import FullModalCotainer from '../common/modal/FullModalCotainer'
+import FullModalCotainer from '@/components/common/modal/FullModalCotainer'
 import ResultModal from './resultModal/ResultModal'
 
 interface chooseMenuModalType {
@@ -18,7 +18,7 @@ interface checkThemeType {
 }
 
 const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const { isOpen, openModal, closeModal } = useModal('resultModal')
   const [checkedTheme, setCheckedTheme] = useState<checkThemeType>({})
   const [checkAll, setCheckAll] = useState(false)
   const [chosenValue, setChosenValue] = useState({ theme: '', menu: '', icon: '' })
@@ -116,7 +116,7 @@ const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
             </div>
             <div className={styles.buttonArea}>
               <CheckBox label="전체선택" checked={checkAll} onChange={handleCheckAll} />
-              <Button disabled={isDisabled} type="submit" label={isDisabled ? '음식을 선택해줘' : '선택했어'} />
+              <Button disabled={isDisabled} full={true} type="submit" label={isDisabled ? '음식을 선택해줘' : '선택했어'} />
             </div>
           </form>
         </div>
