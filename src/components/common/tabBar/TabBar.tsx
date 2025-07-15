@@ -15,7 +15,7 @@ const TabBar = () => {
     {
       icon: RiceIcon,
       menu: '머먹었더라?',
-      url: '/list',
+      url: '/history',
     },
     {
       icon: HomeIcon,
@@ -24,8 +24,8 @@ const TabBar = () => {
     },
     {
       icon: EditGroupIcon,
-      menu: '그룹 편집',
-      url: '/edit',
+      menu: '그룹 목록',
+      url: '/group',
     },
   ]
 

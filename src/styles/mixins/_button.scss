@@ -1,0 +1,14 @@
+@use '@/styles/mixins/_font' as font;
+
+// size
+@mixin buttonStyle($padding, $height, $font-weight, $font-size) {
+  padding: 0 $padding;
+  height: $height;
+  @include font.fontStyle($weight: $font-weight, $size: $font-size);
+}
+
+// color
+@mixin buttonColor($background-color, $color) {
+  background-color: $background-color;
+  color: $color;
+}

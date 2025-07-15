@@ -1,41 +1,149 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import BasicModal from './BasicModalStory'
+import { Story } from '@storybook/blocks'
 
 const meta = {
-  title: 'Components/common/BasicModl',
+  title: 'Components/common/BasicModal',
   component: BasicModal,
+  tags: ['autodocs'],
   parameters: {
-    componentSubtitle: '공통으로 사용하는 모달 컴포넌트입니다.',
+    componentSubtitle: '머먹지에서 공통으로 사용하는 모달 컴포넌트입니다.',
     docs: {
       description: {
-        component: `<li>title: 모달의 제목을 입력합니다.</li><li>desc: 모달의 설명을 입력합니다.</li><li>firstBtnColor, secondBtnColor: 버튼 컬러 값으로 <span className='css-o1d7ko css-in3yi3'>'primary' | 'secondary' | 'negative' | 'basic'</span> 중 하나를 선택할 수 있습니다.</li><li>firstBtnLabel, secondBtnLabel: 버튼의 텍스트를 입력합니다.</li>
-        
-        `,
+        component:
+          '<li>modalType을 설정해서 모달을 사용합니다. <code>alert</code> <code>confirmN</code>  <code>confirmP</code></li><li><code>confirm</code> 타입은 <code>secondBtn</code>이 필수로 있어야 합니다.</li>',
       },
     },
   },
-  decorators: (story) => <div style={{ height: '400px', backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>{story()}</div>,
-  tags: ['autodocs'],
+
+  argTypes: {
+    modalType: {
+      description: '모달 종류',
+      control: 'radio',
+      options: ['alert', 'confirmP', 'confirmN'],
+      table: {
+        category: 'required',
+        type: { summary: 'union' },
+      },
+    },
+    title: {
+      description: '모달 제목',
+      table: {
+        category: 'required',
+        type: { summary: 'ReactNode' },
+      },
+    },
+    desc: {
+      description: '모달 설명',
+      table: {
+        category: 'required',
+        type: { summary: 'ReactNode' },
+      },
+    },
+    firstBtnLabel: {
+      control: 'text',
+      description: '첫번째 버튼 라벨',
+      table: {
+        category: 'required',
+      },
+    },
+    firstBtnOnClick: {
+      description: '첫번째 버튼 함수',
+      table: {
+        category: 'required',
+      },
+    },
+    secondBtnLabel: {
+      description: '두번째 버튼 라벨',
+      if: {
+        arg: 'modalType',
+        neq: 'alert',
+      },
+      table: {
+        category: 'required - confirm',
+      },
+    },
+    secondBtnOnClick: {
+      description: '두번째 버튼 함수',
+      if: {
+        arg: 'modalType',
+        neq: 'alert',
+      },
+      table: {
+        category: 'required - confirm',
+      },
+    },
+  },
 } satisfies Meta<typeof BasicModal>
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof BasicModal>
 
-export const Basic: Story = {
+export const ConfirmPositive: Story = {
   args: {
-    title: '그룹을 저장할까요?',
-    desc: (
-      <>
-        수정 전의 내용은 삭제되며 <br /> 되돌릴 수 없습니다.
-      </>
-    ),
-    firstBtnColor: 'basic',
-    firstBtnLabel: '취소',
+    modalType: 'confirmP',
+    title: 'title',
+    desc: 'description',
+    firstBtnLabel: 'button1',
     firstBtnOnClick: action('Button clicked'),
-    secondBtnColor: 'primary',
-    secondBtnLabel: '저장하기',
+    secondBtnLabel: 'button2',
     secondBtnOnClick: action('Button clicked'),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1298-1365&t=pD666ta77og4q7AJ-1',
+    },
+    docs: {
+      description: {
+        story: '사용자의 결정을 확인하는 모달로 긍정적 선택 버튼을 제공합니다.',
+      },
+    },
+  },
+}
+
+export const ConfirmNegative: Story = {
+  args: {
+    modalType: 'confirmN',
+    title: 'title',
+    desc: 'description',
+    firstBtnLabel: 'button1',
+    firstBtnOnClick: action('Button clicked'),
+    secondBtnLabel: 'button2',
+    secondBtnOnClick: action('Button clicked'),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1298-1365&t=pD666ta77og4q7AJ-1',
+    },
+    docs: {
+      description: {
+        story: '사용자의 결정을 확인하는 모달로 부정적 선택 버튼을 제공합니다.',
+      },
+    },
+  },
+}
+
+export const Alert: Story = {
+  args: {
+    modalType: 'alert',
+    title: 'Title',
+    desc: 'description',
+    firstBtnLabel: 'button1',
+    firstBtnOnClick: action('Button clicked'),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/3JlzBW0AXeJyALzwGYiyDf/0.1?node-id=1298-1365&t=pD666ta77og4q7AJ-1',
+    },
+    docs: {
+      description: {
+        story: '사용자에게 중요한 메시지를 알립니다.',
+      },
+    },
   },
 }

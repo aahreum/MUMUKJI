@@ -1,8 +1,8 @@
 @use '@/styles/mixins/_flex' as flex;
 @use '@/styles/mixins/_font' as font;
 
-.emptyContainer {
-  .emptyContentsArea {
+.container {
+  .contentsArea {
     position: absolute;
     left: 0;
     top: 45%;

@@ -1,15 +1,20 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Index from '@/pages/Index'
-import Edit from '@/pages/Edit'
 import Layout from '@/pages/Layout'
-// import List from '@/pages/List'
 import NotFound from '@/pages/NotFound'
 import InProgress from '@/pages/InProgress'
+import Group from '@/pages/Group'
+import { GroupProvider } from '@/contexts/GroupContext'
+import GroupAdd from '@/pages/GroupAdd'
 
 const router = createBrowserRouter([
   {
     id: 'rootLayout',
-    element: <Layout />,
+    element: (
+      <GroupProvider>
+        <Layout />
+      </GroupProvider>
+    ),
     children: [
       {
         id: 'index',
@@ -17,17 +22,25 @@ const router = createBrowserRouter([
         element: <Index />,
       },
       {
-        id: 'list',
-        path: '/list',
-        // element: <List />,
+        id: 'history',
+        path: '/history',
         element: <InProgress />,
+      },
+      {
+        id: 'group',
+        path: '/group',
+        element: <Group />,
       },
     ],
   },
   {
-    id: 'edit',
-    path: '/edit',
-    element: <Edit />,
+    id: 'groupAdd',
+    path: '/group/:id',
+    element: (
+      <GroupProvider>
+        <GroupAdd />
+      </GroupProvider>
+    ),
   },
   {
     id: 'notFound',

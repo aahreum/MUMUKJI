@@ -1,0 +1,67 @@
+@use '@/styles/base/_commonStyleRules' as *;
+@use '@/styles/mixins/_flex' as flex;
+
+.container {
+  @include flex.flexLayout();
+  gap: 8px;
+}
+
+.container svg path {
+  fill: currentColor;
+}
+
+button:disabled {
+  @extend %buttonDisabled;
+}
+
+.size {
+  @extend %buttonSizeL;
+  &--full {
+    @extend %buttonSizeFull;
+  }
+  &--m {
+    @extend %buttonSizeM;
+  }
+  &--s {
+    @extend %buttonSizeS;
+  }
+  &--xs {
+    @extend %buttonSizeXS;
+  }
+}
+
+.round {
+  @extend %buttonRoundSquare;
+  &--square {
+    @extend %buttonSquare;
+  }
+  &--capsule {
+    @extend %buttonCapsule;
+  }
+}
+
+.solid {
+  @extend %buttonPrimarySolid;
+  &--secondary {
+    @extend %buttonSecondarySolid;
+  }
+  &--tertiary {
+    @extend %buttonTertiarySolid;
+  }
+  &--negative {
+    @extend %buttonNegativeSolid;
+  }
+}
+
+.outline {
+  @extend %buttonPrimaryOutline;
+  &--secondary {
+    @extend %buttonSecondaryOutline;
+  }
+  &--tertiary {
+    @extend %buttonTertiaryOutline;
+  }
+  &--negative {
+    @extend %buttonNegativeOutline;
+  }
+}

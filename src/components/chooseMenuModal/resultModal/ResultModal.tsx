@@ -8,13 +8,14 @@ import useModal from '@/hooks/useModal'
 interface ResultModalProps {
   menu: string
   theme: string
+  icon: string
   close: () => void
   onRetry: () => void
 }
 
-const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
+const ResultModal = ({ menu, theme, close, icon, onRetry }: ResultModalProps) => {
   const [loading, setLoading] = useState(true)
-  const { closeAllModal } = useModal()
+  const { closeAllModal } = useModal('resultModal')
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,6 +46,7 @@ const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
             <>
               <Title>이거 어때?</Title>
               <div className={styles.resultBubble}>
+                <img width={40} height={40} src={icon} alt={theme} />
                 <p className={styles.theme}>{theme}</p>
                 <p className={styles.menu}>{menu}</p>
               </div>
@@ -57,13 +59,15 @@ const ResultModal = ({ menu, theme, close, onRetry }: ResultModalProps) => {
           <Button
             disabled={loading}
             label="다시 뽑아줘"
-            color="primary"
+            full={true}
+            styleType="outline"
+            color="tertiary"
             onClick={() => {
               setLoading(true)
               onRetry()
             }}
           />
-          <Button disabled={loading} label="이거 먹을래!" onClick={handleSelect} />
+          <Button disabled={loading} label="이거 먹을래!" full={true} onClick={handleSelect} />
         </div>
       </div>
     </FullModalCotainer>

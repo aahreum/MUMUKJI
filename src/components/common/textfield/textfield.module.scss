@@ -1,0 +1,40 @@
+@use '@/styles/mixins/_flex' as flex;
+@use '@/styles/mixins/_font' as font;
+
+.container {
+  @include flex.flexLayout();
+  width: 100%;
+  height: 50px;
+  &.outline {
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid $gray-200;
+  }
+  &.underline {
+    padding: 0 8px;
+    border-bottom: 1px solid $gray-200;
+  }
+  &:focus-within {
+    border-color: $secondary-500;
+  }
+  .input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    caret-color: $secondary-500;
+  }
+  .input::placeholder {
+    @include font.fontStyle($color: $gray-400, $weight: 500);
+  }
+  .textCount {
+    min-width: 40px;
+    text-align: right;
+    @include font.fontStyle($color: $gray-400, $size: $font-size-s);
+  }
+  .inputDelBtn {
+    margin-left: 8px;
+    width: 24px;
+    height: 24px;
+  }
+}
