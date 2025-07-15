@@ -7,7 +7,7 @@ import GroupNameModal from '@/components/group/groupAdd/groupNameModal/GroupName
 
 const GroupAddHeader = () => {
   const navigate = useNavigate()
-  const { isOpen, openModal, closeModal } = useModal()
+  const { isOpen, openModal, closeModal } = useModal('groupModal')
   const { groupName, updateGroupName, saveDataToLocalStorage, menuList } = useGroup()
 
   const handleBackButton = () => {

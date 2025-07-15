@@ -15,7 +15,7 @@ interface ResultModalProps {
 
 const ResultModal = ({ menu, theme, close, icon, onRetry }: ResultModalProps) => {
   const [loading, setLoading] = useState(true)
-  const { closeAllModal } = useModal()
+  const { closeAllModal } = useModal('resultModal')
 
   useEffect(() => {
     const timer = setTimeout(() => {

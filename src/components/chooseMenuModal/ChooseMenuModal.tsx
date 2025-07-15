@@ -18,7 +18,7 @@ interface checkThemeType {
 }
 
 const ChooseMenuModal = ({ close }: chooseMenuModalType) => {
-  const { isOpen, openModal, closeModal } = useModal()
+  const { isOpen, openModal, closeModal } = useModal('resultModal')
   const [checkedTheme, setCheckedTheme] = useState<checkThemeType>({})
   const [checkAll, setCheckAll] = useState(false)
   const [chosenValue, setChosenValue] = useState({ theme: '', menu: '', icon: '' })

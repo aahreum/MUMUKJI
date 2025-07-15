@@ -1,7 +1,5 @@
 import styles from '@/styles/pages/index.module.scss'
 import useModal from '@/hooks/useModal'
-import { useRecoilValue } from 'recoil'
-import { modalCountState } from '@/recoil/modalCount'
 import TopLogo from '@/components/common/topLogo/TopLogo'
 import RouletteGroupButton from '@/components/mainPage/rouletteGroupButton/RouletteGroupButton'
 import GroupRouletteList from '@/components/mainPage/groupRouletteList/GroupRouletteList'
@@ -9,12 +7,11 @@ import ChooseMenuModal from '@/components/chooseMenuModal/ChooseMenuModal'
 import GroupAddButton from '@/components/group/groupAdd/groupAddButton/GroupAddButton'
 
 const Index = (): React.ReactElement => {
-  const { isOpen, openModal, closeModal } = useModal()
-  const modalCount = useRecoilValue(modalCountState)
+  const { isOpen, openModal, closeModal } = useModal('chooseModal')
 
   return (
     <>
-      {isOpen && modalCount !== 0 && <ChooseMenuModal close={closeModal} />}
+      {isOpen && <ChooseMenuModal close={closeModal} />}
       <TopLogo />
       <main className={styles.container}>
         <img className={styles.image} src="/images/main.png" alt="메인 이미지" />
