@@ -3,9 +3,9 @@ import Index from '@/pages/Index'
 import Layout from '@/pages/Layout'
 import NotFound from '@/pages/NotFound'
 import InProgress from '@/pages/InProgress'
-import Group from '@/pages/Group'
 import { GroupProvider } from '@/contexts/GroupContext'
 import GroupAdd from '@/pages/GroupAdd'
+import Group from '@/pages/Group'
 
 const router = createBrowserRouter([
   {
