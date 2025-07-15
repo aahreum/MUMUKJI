@@ -1,0 +1,7 @@
+.container {
+  position: fixed;
+  bottom: 92px;
+  right: calc((100vw - 480px) / 2 + 16px);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 12px 26px 0px rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=groupAddButton.module.css.map */
