@@ -18,16 +18,38 @@ const ResultModal = ({ menu, theme, close, icon, onRetry }: ResultModalProps) =>
   const { closeAllModal } = useModal('resultModal')
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 1500)
-
-    return () => clearTimeout(timer)
-  }, [loading])
+    if (menu && theme && icon) {
+      setLoading(true)
+      const timer = setTimeout(() => {
+        setLoading(false)
+      }, 1500)
+      return () => clearTimeout(timer)
+    }
+  }, [menu, theme, icon])
 
   const handleSelect = () => {
     closeAllModal()
     // 이후 머먹었더라 페이지 추가시 로직 추가 예정
+  }
+
+  const handleRetry = () => {
+    onRetry()
+  }
+
+  if (!menu || !theme) {
+    return (
+      <FullModalCotainer onClick={close}>
+        <div className={styles.container}>
+          <div className={styles.contentsArea}>
+            <Title>로딩 중...</Title>
+            <div className={styles.loadingBubble}>
+              <span className={styles.hmm} />
+            </div>
+            <img className={styles.image} src="/images/rouletteLoading.png" alt="로딩" />
+          </div>
+        </div>
+      </FullModalCotainer>
+    )
   }
 
   return (
@@ -54,19 +76,8 @@ const ResultModal = ({ menu, theme, close, icon, onRetry }: ResultModalProps) =>
             </>
           )}
         </div>
-
         <div className={styles.buttonArea}>
-          <Button
-            disabled={loading}
-            label="다시 뽑아줘"
-            full={true}
-            styleType="outline"
-            color="tertiary"
-            onClick={() => {
-              setLoading(true)
-              onRetry()
-            }}
-          />
+          <Button disabled={loading} label="다시 뽑아줘" full={true} styleType="outline" color="tertiary" onClick={handleRetry} />
           <Button disabled={loading} label="이거 먹을래!" full={true} onClick={handleSelect} />
         </div>
       </div>
