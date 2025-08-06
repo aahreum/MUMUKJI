@@ -2,20 +2,13 @@ import styles from './groupAddButton.module.scss'
 import useGroup from '@/hooks/useGroup'
 import AddIcon from '@/assets/icons/add.svg?react'
 import Button from '@/components/common/button/Button'
-import { useEffect, useState } from 'react'
 
 const GroupAddButton = () => {
-  const { addGroup } = useGroup()
-  const [hasMenuList, setHasMenuList] = useState(false)
-
-  useEffect(() => {
-    const storedData = localStorage.getItem('menuList')
-    setHasMenuList(storedData?.length === 0 ? false : true)
-  }, [])
+  const { addGroup, storedGroups } = useGroup()
 
   const isMainPage = location.pathname === '/'
-  const buttonStyle = isMainPage ? (hasMenuList ? 'outline' : 'solid') : 'solid'
-  const buttonColor = isMainPage ? (hasMenuList ? 'tertiary' : 'primary') : 'primary'
+  const buttonStyle = isMainPage ? (Object.keys(storedGroups).length !== 0 ? 'outline' : 'solid') : 'solid'
+  const buttonColor = isMainPage ? (Object.keys(storedGroups).length !== 0 ? 'tertiary' : 'primary') : 'primary'
 
   return (
     <Button
