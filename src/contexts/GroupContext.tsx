@@ -22,6 +22,7 @@ interface GroupContextType {
   isFavoriteLimitModalOpen: boolean
   setIsFavoriteLimitModalOpen: Dispatch<SetStateAction<boolean>>
   isConfirmModalOpen: boolean
+  storedGroups: Record<number, storedGroupData>
 }
 
 export const GroupContext = createContext<GroupContextType | undefined>(undefined)
@@ -214,6 +215,7 @@ export const GroupProvider = ({ children }: { children: ReactNode }) => {
         isFavoriteLimitModalOpen,
         setIsFavoriteLimitModalOpen,
         isConfirmModalOpen,
+        storedGroups,
       }}
     >
       {children}
