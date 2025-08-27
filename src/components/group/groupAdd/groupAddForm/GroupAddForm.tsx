@@ -78,7 +78,7 @@ const GroupAddForm = () => {
           <div className={styles.formBottomArea}>
             {error && <p className={styles.formErrorMsg}>{error}</p>}
             <div className={styles.buttonArea}>
-              {menuList.length > 0 && <Button label="취소" styleType="outline" roundType="square" size="xs" color="tertiary" onClick={() => setShowGroupAddForm(false)} />}
+              {menuList.length > 0 && <Button label="닫기" styleType="outline" roundType="square" size="xs" color="tertiary" onClick={() => setShowGroupAddForm(false)} />}
               <Button type="submit" label="완료" roundType="square" size="xs" color="secondary" disabled={selectedItem === '' || textfield.length === 0} />
             </div>
           </div>
